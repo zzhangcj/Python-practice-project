@@ -1,8 +1,10 @@
 import os
 import shutil
+from email.policy import default
 from time import strftime
 import datetime
 import subprocess
+import zipfile
 
 
 # shutil = 文件操作工具
@@ -223,7 +225,7 @@ def func10_file_search():
                             else:
                                 if keyword.lower() in name.lower():
                                     result_files.append(full_path)
-                                #这里不需要else的原因：符合条件则收入列表，不符合则下一个
+                                #这里不需要else的原因：这里在for循环里面，符合条件则收入列表，不符合则下一个
                     else:
                         #如果没有关键字，则直接添加
                         result_files.append(full_path)
@@ -399,6 +401,165 @@ Windows 中文系统必须用 GBK 编码，否则复制中文会乱码
 
 
 #功能11: 文件压缩
+def func11_compress_file():
+    print("\n===== 功能11：文件压缩 =====")
+
+    #选择文件压缩类型
+    print("压缩类型：")
+    print("1 → 压缩单个文件")
+    print("2 → 压缩整个文件夹")
+    compress_type = input("请选择（1/2）：").strip()
+
+    if compress_type not in['1','2']:
+        print("❌ 输入无效")
+        return
+
+    source_path = ""
+    #先定义变量，占个位置，保证后面一定能用，可以不写也没问题，可能会有黄色警告
+    #因为后续要多次使用、在不同分支里赋值 → 必须提前初始化
+    #只在一个地方用、用完就丢 → 可不用提前写
+
+    if compress_type == "1":
+        while True:
+            source_path = input("请输入要压缩的文件的完整路径：").strip().strip('"').strip("'")
+            source_path = os.path.normpath(source_path)
+            if os.path.isfile(source_path):
+                break
+            print("❌ 文件不存在，请重新输入！")
+
+        #自动生成压缩文件名
+        default_zip_name = os.path.basename(source_path) + ".zip"
+        #os.path.basename 获取文件 / 文件夹名字
+
+    else:
+        while True:
+            source_path = input("请输入要压缩的文件夹路径：").strip().strip('"').strip("'")
+            source_path = os.path.normpath(source_path)
+            if os.path.isdir(source_path):
+                break
+            print("❌ 文件夹不存在，请重新输入！")
+
+        default_zip_name = os.path.basename(source_path) + ".zip"
+        #basename = 从完整路径里，只提取最后的文件名
+
+        #获取文件保存路径
+        target_dir = input(f"请输入压缩文件保存目录（直接回车保存到源文件所在目录）：").strip().strip('"').strip("'")
+        #用户直接回车 → 保存到源文件同级目录
+        if not target_dir:
+            target_dir = os.path.dirname(source_path)
+
+        target_dir = os.path.normpath(target_dir)
+        if not os.path.exists(target_dir):
+            print("❌ 目标目录不存在")
+            return
+
+        #获取压缩文件名
+        zip_name = input(f"请输入压缩文件名（直接回车使用默认：{default_zip_name}）：").strip()
+        if not zip_name:
+            zip_name = default_zip_name
+        if not zip_name.endswith('.zip'):
+            zip_name += '.zip'
+        #不输入 → 用默认名,忘记加 .zip → 自动补上
+        zip_path = os.path.join(target_dir,zip_name)
+
+        #判断是否已经存在
+        if os.path.exists(zip_path):
+            overwrite = input("⚠️ 文件已存在，是否覆盖？(y/n)：").strip().lower()
+            if overwrite != 'y':
+                print("❌ 压缩已取消")
+                return
+
+        #设置压缩等级
+        compress_level = input("压缩等级（1-9，数值越大压缩率越高但速度越慢，默认6）：").strip()
+        try: #对于可能出现错误的情况，使用try来尝试，如果出现异常报错，用except来抛出解决它
+            compress_level = int(compress_level) if compress_level else 6
+            #三元表达式：如果compress_level有效输入则转为整型int，否则则默认为6
+            compress_level = max(1,min(9,compress_level)) #限制到1-9之间
+        except ValueError:
+            compress_level = 6
+            #如果用户乱输入，int(compress_level)会出现ValueError
+            #这个时候把compress_level默认变成6
+
+            # 执行压缩
+            print(f"🔄 正在压缩，请稍候...")
+            try:
+                with zipfile.ZipFile(zip_path,'w',zipfile.ZIP_DEFLATED) as zipf:
+                    # zipfile.ZipFile,创建 / 打开一个 zip 压缩包
+                    # 'w',write 写入模式,没有文件就创建,有文件就覆盖（前面已经确认过）
+                    # zipfile.ZIP_DEFLATED表示启用压缩,不写这个 → 只打包但不压缩,写了才能真正变小
+                    # as zipf,给压缩包起个小名 zipf,后面所有操作都用 zipf.xxx
+                    # with ... 的作用:自动打开、自动关闭文件,不用写 zipf.close()
+                    if compress_type == "1":
+                        #压缩单个文件
+                        zipf.write(source_path,arcname=os.path.basename(source_path),
+                                   compresslevel=compress_level)
+                        #压缩包（一个空箱子）,write() = 把东西放进箱子里
+                        #arcname = 压缩包里面显示的文件名,用basename()来缩短真实路径：例如：C:\folder\sub\a.txt变成简单的a.txt
+                    else:
+                        #压缩文件夹
+                        for root,dirs,files in os.walk(source_path):
+                            # os.walk功能：自动遍历文件夹 + 所有子文件夹dirs + 所有文件files
+                            # 返回3个东西：root(当前正在遍历的文件夹路径);dirs(当前文件夹里的子文件夹);files(当前文件夹里的所有文件)
+                            for file in files:
+                                file_path = os.path.join(root,file)
+                                arcname = os.path.relpath(file_path,start=os.path.dirname(source_path))
+                                '''
+                                #os.path.relpath (文件，起点):计算从起点到文件的相对路径
+                                让压缩包里的目录结构正确，不乱七八糟
+                                例子：
+                                源文件夹：C:\project\files
+                                文件：C:\project\files\a\b\c.txt
+                                相对路径变成：
+                                files\a\b\c.txt
+                                '''
+                                zipf.write(file_path,arcname=arcname,compresslevel=compress_level)
+                #显示压缩结果
+                original_size = get_folder_size(source_path) if compress_type == "2" else os.path.getsize(source_path)
+                compressed_size = os.path.getsize(zip_path)
+                ratio = (1 - compressed_size / original_size)*100 if original_size > 0 else 0
+
+                print(f"\n✅ 压缩成功！")
+                print(f"📦 压缩文件：{zip_path}")
+                print(f"📊 原始大小：{format_file_size(original_size)}")
+                print(f"📊 压缩后：{format_file_size(compressed_size)}")
+                print(f"📊 压缩率：{ratio:.1f}%")
+
+                # 日志记录
+                # log_operation("文件压缩", f"{source_path} → {zip_path}")
+
+            except Exception as e:
+                print(f"❌ 压缩失败：{e}")
+                if os.path.exists(zip_path):
+                    os.remove(zip_path)
+
+# 辅助函数：获取文件夹大小
+def get_folder_size(folder_path):
+    #递归计算文件夹总大小
+    total_size = 0
+    try:
+        for root, dirs, files in os.walk(folder_path):
+            for file in files:
+                file_path = os.path.join(root, file)
+                try:
+                    total_size += os.path.getsize(file_path)
+                    #获取这个文件的大小,total_size += = 加到总数里
+
+                except (OSError,PermissionError):
+                    pass #有些文件打不开、权限不够,跳过它，不算它，不报错
+    except Exception:
+        pass #整个文件夹遍历出错（比如文件夹不存在）,也直接跳过，不崩溃
+    return total_size
+
+
+
+
+
+
+
+
+
+
+
 #功能12：文件解压
     
 
@@ -422,6 +583,7 @@ def main():
         print("8 → 文件重命名")
         print("9 → 日志输出")
         print("10 → 文件搜索")
+        print("11 → 文件压缩")
         print("0 → 退出程序")
         print("================================")
 
@@ -447,6 +609,8 @@ def main():
             func9_log_output()
         elif choice == "10":
             func10_file_search()
+        elif choice == "11":
+            func11_compress_file()
         elif choice == "0":
             print("程序退出，再见！")
             break
