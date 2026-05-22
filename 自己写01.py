@@ -442,95 +442,95 @@ def func11_compress_file():
         default_zip_name = os.path.basename(source_path) + ".zip"
         #basename = 从完整路径里，只提取最后的文件名
 
-        #获取文件保存路径
-        target_dir = input(f"请输入压缩文件保存目录（直接回车保存到源文件所在目录）：").strip().strip('"').strip("'")
-        #用户直接回车 → 保存到源文件同级目录
-        if not target_dir:
-            target_dir = os.path.dirname(source_path)
+    #获取文件保存路径
+    target_dir = input(f"请输入压缩文件保存目录（直接回车保存到源文件所在目录）：").strip().strip('"').strip("'")
+    #用户直接回车 → 保存到源文件同级目录
+    if not target_dir:
+        target_dir = os.path.dirname(source_path)
 
-        target_dir = os.path.normpath(target_dir)
-        if not os.path.exists(target_dir):
-            print("❌ 目标目录不存在")
+    target_dir = os.path.normpath(target_dir)
+    if not os.path.exists(target_dir):
+        print("❌ 目标目录不存在")
+        return
+
+    #获取压缩文件名
+    zip_name = input(f"请输入压缩文件名（直接回车使用默认：{default_zip_name}）：").strip()
+    if not zip_name:
+        zip_name = default_zip_name
+    if not zip_name.endswith('.zip'):
+        zip_name += '.zip'
+    #不输入 → 用默认名,忘记加 .zip → 自动补上
+    zip_path = os.path.join(target_dir,zip_name)
+
+    #判断是否已经存在
+    if os.path.exists(zip_path):
+        overwrite = input("⚠️ 文件已存在，是否覆盖？(y/n)：").strip().lower()
+        if overwrite != 'y':
+            print("❌ 压缩已取消")
             return
 
-        #获取压缩文件名
-        zip_name = input(f"请输入压缩文件名（直接回车使用默认：{default_zip_name}）：").strip()
-        if not zip_name:
-            zip_name = default_zip_name
-        if not zip_name.endswith('.zip'):
-            zip_name += '.zip'
-        #不输入 → 用默认名,忘记加 .zip → 自动补上
-        zip_path = os.path.join(target_dir,zip_name)
+    #设置压缩等级
+    compress_level = input("压缩等级（1-9，数值越大压缩率越高但速度越慢，默认6）：").strip()
+    try: #对于可能出现错误的情况，使用try来尝试，如果出现异常报错，用except来抛出解决它
+        compress_level = int(compress_level) if compress_level else 6
+        #三元表达式：如果compress_level有效输入则转为整型int，否则则默认为6
+        compress_level = max(1,min(9,compress_level)) #限制到1-9之间
+    except ValueError:
+        compress_level = 6
+        #如果用户乱输入，int(compress_level)会出现ValueError
+        #这个时候把compress_level默认变成6
 
-        #判断是否已经存在
+    # 执行压缩
+    print(f"🔄 正在压缩，请稍候...")
+    try:
+        with zipfile.ZipFile(zip_path,'w',zipfile.ZIP_DEFLATED) as zipf:
+            # zipfile.ZipFile,创建 / 打开一个 zip 压缩包
+            # 'w',write 写入模式,没有文件就创建,有文件就覆盖（前面已经确认过）
+            # zipfile.ZIP_DEFLATED表示启用压缩,不写这个 → 只打包但不压缩,写了才能真正变小
+            # as zipf,给压缩包起个小名 zipf,后面所有操作都用 zipf.xxx
+            # with ... 的作用:自动打开、自动关闭文件,不用写 zipf.close()
+            if compress_type == "1":
+                #压缩单个文件
+                zipf.write(source_path,arcname=os.path.basename(source_path),
+                           compresslevel=compress_level)
+                #压缩包（一个空箱子）,write() = 把东西放进箱子里
+                #arcname = 压缩包里面显示的文件名,用basename()来缩短真实路径：例如：C:\folder\sub\a.txt变成简单的a.txt
+            else:
+                #压缩文件夹
+                for root,dirs,files in os.walk(source_path):
+                    # os.walk功能：自动遍历文件夹 + 所有子文件夹dirs + 所有文件files
+                    # 返回3个东西：root(当前正在遍历的文件夹路径);dirs(当前文件夹里的子文件夹);files(当前文件夹里的所有文件)
+                    for file in files:
+                        file_path = os.path.join(root,file)
+                        arcname = os.path.relpath(file_path,start=os.path.dirname(source_path))
+                        '''
+                        #os.path.relpath (文件，起点):计算从起点到文件的相对路径
+                        让压缩包里的目录结构正确，不乱七八糟
+                        例子：
+                        源文件夹：C:/project/files
+                        文件：C:/project/files/a/b/c.txt
+                        相对路径变成：
+                        files/a/b/c.txt
+                        '''
+                        zipf.write(file_path,arcname=arcname,compresslevel=compress_level)
+        #显示压缩结果
+        original_size = get_folder_size(source_path) if compress_type == "2" else os.path.getsize(source_path)
+        compressed_size = os.path.getsize(zip_path)
+        ratio = (1 - compressed_size / original_size)*100 if original_size > 0 else 0
+
+        print(f"\n✅ 压缩成功！")
+        print(f"📦 压缩文件：{zip_path}")
+        print(f"📊 原始大小：{format_file_size(original_size)}")
+        print(f"📊 压缩后：{format_file_size(compressed_size)}")
+        print(f"📊 压缩率：{ratio:.1f}%")
+
+        # 日志记录
+        # log_operation("文件压缩", f"{source_path} → {zip_path}")
+
+    except Exception as e:
+        print(f"❌ 压缩失败：{e}")
         if os.path.exists(zip_path):
-            overwrite = input("⚠️ 文件已存在，是否覆盖？(y/n)：").strip().lower()
-            if overwrite != 'y':
-                print("❌ 压缩已取消")
-                return
-
-        #设置压缩等级
-        compress_level = input("压缩等级（1-9，数值越大压缩率越高但速度越慢，默认6）：").strip()
-        try: #对于可能出现错误的情况，使用try来尝试，如果出现异常报错，用except来抛出解决它
-            compress_level = int(compress_level) if compress_level else 6
-            #三元表达式：如果compress_level有效输入则转为整型int，否则则默认为6
-            compress_level = max(1,min(9,compress_level)) #限制到1-9之间
-        except ValueError:
-            compress_level = 6
-            #如果用户乱输入，int(compress_level)会出现ValueError
-            #这个时候把compress_level默认变成6
-
-            # 执行压缩
-            print(f"🔄 正在压缩，请稍候...")
-            try:
-                with zipfile.ZipFile(zip_path,'w',zipfile.ZIP_DEFLATED) as zipf:
-                    # zipfile.ZipFile,创建 / 打开一个 zip 压缩包
-                    # 'w',write 写入模式,没有文件就创建,有文件就覆盖（前面已经确认过）
-                    # zipfile.ZIP_DEFLATED表示启用压缩,不写这个 → 只打包但不压缩,写了才能真正变小
-                    # as zipf,给压缩包起个小名 zipf,后面所有操作都用 zipf.xxx
-                    # with ... 的作用:自动打开、自动关闭文件,不用写 zipf.close()
-                    if compress_type == "1":
-                        #压缩单个文件
-                        zipf.write(source_path,arcname=os.path.basename(source_path),
-                                   compresslevel=compress_level)
-                        #压缩包（一个空箱子）,write() = 把东西放进箱子里
-                        #arcname = 压缩包里面显示的文件名,用basename()来缩短真实路径：例如：C:\folder\sub\a.txt变成简单的a.txt
-                    else:
-                        #压缩文件夹
-                        for root,dirs,files in os.walk(source_path):
-                            # os.walk功能：自动遍历文件夹 + 所有子文件夹dirs + 所有文件files
-                            # 返回3个东西：root(当前正在遍历的文件夹路径);dirs(当前文件夹里的子文件夹);files(当前文件夹里的所有文件)
-                            for file in files:
-                                file_path = os.path.join(root,file)
-                                arcname = os.path.relpath(file_path,start=os.path.dirname(source_path))
-                                '''
-                                #os.path.relpath (文件，起点):计算从起点到文件的相对路径
-                                让压缩包里的目录结构正确，不乱七八糟
-                                例子：
-                                源文件夹：C:\project\files
-                                文件：C:\project\files\a\b\c.txt
-                                相对路径变成：
-                                files\a\b\c.txt
-                                '''
-                                zipf.write(file_path,arcname=arcname,compresslevel=compress_level)
-                #显示压缩结果
-                original_size = get_folder_size(source_path) if compress_type == "2" else os.path.getsize(source_path)
-                compressed_size = os.path.getsize(zip_path)
-                ratio = (1 - compressed_size / original_size)*100 if original_size > 0 else 0
-
-                print(f"\n✅ 压缩成功！")
-                print(f"📦 压缩文件：{zip_path}")
-                print(f"📊 原始大小：{format_file_size(original_size)}")
-                print(f"📊 压缩后：{format_file_size(compressed_size)}")
-                print(f"📊 压缩率：{ratio:.1f}%")
-
-                # 日志记录
-                # log_operation("文件压缩", f"{source_path} → {zip_path}")
-
-            except Exception as e:
-                print(f"❌ 压缩失败：{e}")
-                if os.path.exists(zip_path):
-                    os.remove(zip_path)
+            os.remove(zip_path)
 
 # 辅助函数：获取文件夹大小
 def get_folder_size(folder_path):
@@ -551,17 +551,133 @@ def get_folder_size(folder_path):
     return total_size
 
 
-
-
-
-
-
-
-
-
-
 #功能12：文件解压
-    
+def func12_extract_file():
+    print("\n===== 功能12：文件解压 =====")
+
+    #获取压缩文件路径
+    while True:
+        zip_path = input("请输入要解压的zip文件路径：").strip().strip("'").strip('"')
+        zip_path = os.path.normpath(zip_path)
+        if os.path.isfile(zip_path) and zip_path.lower().endswith('.zip'):
+            break
+        print("❌ 文件不存在或不是zip文件，请重新输入！")
+
+    #验证zip文件是否有效
+    try:
+        with zipfile.ZipFile(zip_path,'r') as test_zip: #尝试打开这个压缩包
+            pass #pass,什么都不做，只用来 “试打开”,只要能打开，就说明 ZIP 是好的
+    except zipfile.BadZipFile:
+        print("❌ 文件已损坏或不是有效的zip文件")
+        return
+
+    #获取解压目标路径
+    default_extract_dir = os.path.splitext(zip_path)[0]
+    #splitext的作用是分割这个路径和扩展名(后缀)，[0]的意思是取文件名主体，[1]是指取后缀
+    #C:\project\archive.zip 被splitext之后，成为C:\project\archive（文件名主体） 和.zip（扩展名）
+    extract_dir = input(f"请输入解压目标路径（直接回车使用：{default_extract_dir}）：").strip().strip('"').strip("'")
+
+    if not extract_dir:
+        extract_dir = default_extract_dir
+
+    extract_dir = os.path.normpath(extract_dir)
+
+    #检查是否已存在
+    if os.path.exists(extract_dir):
+        print("⚠️ 目标路径已存在")
+
+        options = {
+            "1": "overwrite",
+            "2": "merge",
+            "3": "cancel"
+        }
+
+        while True:
+            choice = input("请选择：1 → 覆盖并清空 / 2 → 合并文件 / 3 → 取消操作：").strip()
+
+            if choice in options:
+                if choice == '1':
+                    #删除现有文件夹
+                    try:
+                        shutil.rmtree(extract_dir)
+                    except Exception as e:
+                        print(f"❌ 删除失败：{e}")
+                        return
+                elif choice == '2':
+                    print("📂 将合并到现有文件夹")
+                elif choice == '3':
+                    print("❌ 解压已取消")
+                    return
+                break #break 和所有 choice == 1/2/3 是同级的！只要 choice 是 1、2、3 其中一个，就会走到 break！
+
+            else:
+                print("❌ 输入无效，请重新选择（1/2/3）")
+
+    #创建解压目录
+    os.makedirs(extract_dir,exist_ok= True)
+
+    #设置解压选项
+    print("\n解压选项：")
+    print("1 → 解压所有文件（默认）")
+    print("2 → 仅解压特定类型文件（如 .txt, .jpg）")
+    print("3 → 查看压缩包内容")
+
+    sub_choice = input("请选择（直接回车使用选项1）：").strip()
+
+    try:
+        with zipfile.ZipFile(zip_path,'r') as zipf:
+            if sub_choice == '3':
+                print(f"\n📦 压缩包内容(共{len(zipf.namelist())}个文件:")
+                print("=" * 60)
+                for i,name in enumerate(zipf.namelist(),1):
+                    info = zipf.getinfo(name) #拿到这个文件的大小、时间、是否为文件夹等信息
+                    if not name.endswith('/'):
+                        size_str = format_file_size(info.file_size)
+                        print(f"{i:3d}. {name} ({size_str})")
+                    else:
+                        print(f"{i:3d}. {name} [文件夹]")
+
+                confirm = input("\n是否解压？(y/n)：").strip().lower()
+                if confirm != 'y':
+                    print("❌ 解压已取消")
+                    return
+
+            elif sub_choice == '2':
+                # 仅解压特定类型
+                extensions = input("请输入要解压的文件扩展名（多个用逗号分隔，如 .txt,.jpg）：").strip()
+                ext_list = [ext.strip().lower() for ext in extensions.split(',')]
+                #split(',') → 按逗号切分,输入 .txt, .jpg→ 变成 ['.txt', '.jpg']
+                files_to_extract = []
+                for name in zipf.namelist():
+                    if not name.endswith('/') and any(name.lower().endswith(ext) for ext in ext_list):
+                        files_to_extract.append(name)
+
+                if not files_to_extract:
+                    print("❌ 压缩包中没有匹配的文件类型")
+                    return
+
+                print(f"找到 {len(files_to_extract)} 个匹配的文件")
+                for name in files_to_extract:
+                    zipf.extract(name,extract_dir)
+                    #zipf.extract(文件名, 目标路径)：解压单个指定文件到对应目录
+                    print(f"✅ 已解压：{name}")
+
+            else:
+                # 解压所有文件
+                zipf.extractall(extract_dir)
+                # extractall(目标路径)：一次性解压压缩包内全部文件与目录，自动还原原有文件夹结构
+                print("✅ 所有文件解压完成")
+
+    except Exception as e:
+        print(f"❌ 解压失败：{e}")
+
+
+
+
+
+
+
+
 
 
 
@@ -584,6 +700,7 @@ def main():
         print("9 → 日志输出")
         print("10 → 文件搜索")
         print("11 → 文件压缩")
+        print("12 → 文件解压")
         print("0 → 退出程序")
         print("================================")
 
@@ -611,6 +728,9 @@ def main():
             func10_file_search()
         elif choice == "11":
             func11_compress_file()
+        elif choice == "12":
+            func12_extract_file()
+
         elif choice == "0":
             print("程序退出，再见！")
             break
