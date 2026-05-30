@@ -80,20 +80,151 @@ def func3_make_folder():
         print("⚠️ 文件夹已存在，无需创建")
 
 def func4_move_file():
-    print("\n===== 功能4：移动文件 =====")
-    source = input("请输入要移动的文件完整路径：")
-    target_dir = input("请输入目标文件夹路径：")
+    print("\n===== 功能4：移动文件/文件夹 =====")
 
-    if not os.path.isfile(source):
-        print("❌ 源文件不存在")
-        return
-    if not os.path.exists(target_dir):
-        print("❌ 目标文件夹不存在")
-        return
+    # 选择移动类型
+    print("移动类型：")
+    print("1 → 移动单个文件")
+    print("2 → 移动文件夹")
+    print("3 → 批量移动文件（按后缀）")
+    move_type = input("请选择（1/2/3）：").strip()
 
-    # 移动文件
-    shutil.move(source, target_dir)
-    print("✅ 文件移动成功！")
+    if move_type == "1":
+        # 移动单个文件
+        while True:
+            source = input("请输入要移动的文件完整路径：").strip().strip('"').strip("'")
+            source = os.path.normpath(source)
+            if os.path.isfile(source):
+                break
+            print("❌ 源文件不存在，请重新输入！")
+
+        while True:
+            target_dir = input("请输入目标文件夹路径：").strip().strip('"').strip("'")
+            target_dir = os.path.normpath(target_dir)
+            if os.path.exists(target_dir):
+                break
+            print("❌ 目标文件夹不存在，请重新输入！")
+
+        # 处理目标路径中的同名文件
+        target_path = os.path.join(target_dir, os.path.basename(source))
+        target_path = handle_duplicate_file(target_path)
+
+        try:
+            shutil.move(source, target_path)
+            print(f"✅ 文件移动成功！")
+            print(f"📂 从：{source}")
+            print(f"📂 到：{target_path}")
+
+
+        except Exception as e:
+            print(f"❌ 移动失败：{e}")
+
+    elif move_type == "2":
+        # 移动文件夹
+        while True:
+            source = input("请输入要移动的文件夹完整路径：").strip().strip('"').strip("'")
+            source = os.path.normpath(source)
+            if os.path.isdir(source):
+                break
+            print("❌ 源文件夹不存在，请重新输入！")
+
+        while True:
+            target_dir = input("请输入目标文件夹路径：").strip().strip('"').strip("'")
+            target_dir = os.path.normpath(target_dir)
+            if os.path.exists(target_dir):
+                break
+            print("❌ 目标文件夹不存在，请重新输入！")
+
+        # 检查目标路径是否已存在同名文件夹
+        target_path = os.path.join(target_dir, os.path.basename(source))
+
+        if os.path.exists(target_path):
+            print(f"⚠️ 目标位置已存在同名文件夹：{os.path.basename(source)}")
+            #basename:从完整文件/文件夹路径中，提取最后一级名称（文件名或文件夹名）
+            choice = input("请选择：1 → 覆盖并替换 / 2 → 合并文件夹 / 3 → 取消操作：").strip()
+
+            if choice == '1':
+                try:
+                    shutil.rmtree(target_path)
+                    shutil.move(source,target_dir)
+                except Exception as e:
+                    print(f"❌ 移动失败：{e}")
+                    return
+            elif choice == '2':
+                #合并文件夹
+                try:
+                    merge_folders(source,target_path)
+                    shutil.rmtree(source) #删除原文件夹
+                    print(f"✅ 文件夹已合并移动成功！")
+                except Exception as e:
+                    print(f"❌ 合并失败：{e}")
+                    return
+            else:
+                print("❌ 操作已取消")
+                return
+        else:
+            try:
+                shutil.move(source, target_dir)
+                print(f"✅ 文件夹移动成功！")
+                print(f"📂 从：{source}")
+                print(f"📂 到：{target_path}")
+            except Exception as e:
+                print(f"❌ 移动失败：{e}")
+
+    elif move_type == "3":
+        # 批量移动文件（按后缀）
+        print("\n批量移动文件（按后缀分类）")
+
+        while True:
+            source_dir = input("请输入源文件夹路径：").strip().strip('"').strip("'")
+            source_dir = os.path.normpath(source_dir)
+            if os.path.isdir(source_dir):
+                break
+            print("❌ 源文件夹不存在，请重新输入！")
+
+        while True:
+            target_base = input("请输入目标根目录：").strip().strip('"').strip("'")
+            target_base = os.path.normpath(target_base)
+            if os.path.exists(target_base):
+                break
+            print("❌ 目标根目录不存在，请重新输入！")
+
+        # 输入要移动的后缀
+        extensions = input("请输入要移动的文件后缀（多个用逗号分隔，如 .txt,.jpg，直接回车移动所有文件）：").strip()
+
+        if extensions:
+            ext_list = [ext.strip().lower() for ext in extensions.split(',')]
+            # 原始输入：.TXT, jpg,.PNG
+            # split(',') → [' .TXT ', ' .jpg', ' .PNG '] 这里是以英文逗号作为分隔符，把整串输入的extension切割为字符串列表
+            # for ext in 切割后的列表,逐个取出分割后的每一段后缀字符串，命名为 ext, 以此遍历每个元素
+            # strip() + lower() → ['.txt', '.jpg', '.png']
+            # 最终得到列表：ext_list = ['.txt', '.jpg', '.png']
+            ext_list = [ext if ext.startswith('.') else f'.{ext}' for ext in ext_list]
+            #三元表达式：A if 条件 else B
+            # 条件：ext.startswith('.')
+            # 判断当前字符串是不是以英文点.开头(用户输入不规范：有人习惯写 txt，有人习惯写 .txt，这行代码统一补全后缀前面的点。)
+            # 条件成立（已有点）：直接保留原字符串ext
+            # 条件不成立（没有点）：用f - string在前面拼接一个点f'.{ext}'
+        else:
+            ext_list = None # 移动所有文件
+
+            # 是否递归子文件夹
+            recursive = input("是否递归搜索子文件夹？(y/n，默认y)：").strip().lower()
+            recursive = recursive != 'n'
+
+            # 是否保持目录结构
+            keep_structure = input("是否保持目录结构？(y/n，默认y)：").strip().lower()
+            keep_structure = keep_structure != 'n'
+
+            print(f"\n🔄 正在扫描并移动文件...")
+
+            moved_count = 0
+            skipped_count = 0
+            error_count = 0
+
+
+
+
 
 
 #功能5：复制文件
