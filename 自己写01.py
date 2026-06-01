@@ -6,6 +6,8 @@ import datetime
 import subprocess
 import zipfile
 
+from pandas.core.tools.datetimes import should_cache
+
 
 # shutil = 文件操作工具
 # 主要功能：复制文件,移动文件,删除文件夹,解压文件
@@ -79,6 +81,8 @@ def func3_make_folder():
     else:
         print("⚠️ 文件夹已存在，无需创建")
 
+
+#这里移动文件的代码依旧有优化空间：比如选择移动单个文件，路径输入却是文件夹，没有报错说是文件夹或者重新选
 def func4_move_file():
     print("\n===== 功能4：移动文件/文件夹 =====")
 
@@ -208,20 +212,153 @@ def func4_move_file():
         else:
             ext_list = None # 移动所有文件
 
-            # 是否递归子文件夹
-            recursive = input("是否递归搜索子文件夹？(y/n，默认y)：").strip().lower()
-            recursive = recursive != 'n'
+        # 是否递归子文件夹
+        recursive = input("是否递归搜索子文件夹？(y/n，默认y)：").strip().lower()
+        recursive = recursive != 'n'
 
-            # 是否保持目录结构
-            keep_structure = input("是否保持目录结构？(y/n，默认y)：").strip().lower()
-            keep_structure = keep_structure != 'n'
+        # 是否保持目录结构
+        keep_structure = input("是否保持目录结构？(y/n，默认y)：").strip().lower()
+        keep_structure = keep_structure != 'n'
 
-            print(f"\n🔄 正在扫描并移动文件...")
+        print(f"\n🔄 正在扫描并移动文件...")
 
-            moved_count = 0
-            skipped_count = 0
-            error_count = 0
+        moved_count = 0 #成功移动的文件总数，初始 0
+        skipped_count = 0 #跳过不移动的文件总数（后缀不符合要求），初始 0
+        error_count = 0 #移动失败的文件总数，初始 0
 
+        def move_files_by_suffix(dir_path,relative_path=""):
+            """
+            relative_path="":带默认值的形参
+            规则：调用函数时如果不传这个参数，它就自动使用 = 后面的默认值；如果调用时手动传了值，就用你传入的值，覆盖默认值
+            我们用relative_path记录当前文件夹相对于原始根目录的层级路径。
+            举例子：原始根目录：D:\素材（整个任务的起点）它本身没有上级目录，所以用空字符串表示「无层级」
+            它下面的子文件夹子文件夹A：相对路径就是子文件夹A
+            再下一级子文件夹B：相对路径就是子文件夹A\子文件夹B
+            """
+
+
+            nonlocal moved_count,skipped_count,error_count
+            #nonlocal关键字:这个函数是嵌套函数，上面三个计数器定义在函数外面
+            #修改外层函数的这三个变量，不是新建局部变量。没有这行，计数器数值永远不会变
+
+            try:
+                for name in os.listdir(dir_path):
+                    full_path = os.path.join(dir_path,name) #拼接成完整绝对路径
+
+                    if os.path.isfile(full_path):
+                        should_move = False #should_move是标记位,默认先设为不移动
+                        if ext_list is None:
+                            should_move = True
+                            #用户没输入后缀 → 移动所有文件
+                        else:
+                            suffix = os.path.splitext(name)[-1].lower()
+                            if suffix in ext_list:
+                                should_move = True
+                                #判断当前文件后缀是否在用户指定列表里吗，在就标记为需要移动
+
+                        if should_move: #看用户有没有保留目录结构的需求
+                            if keep_structure and relative_path:
+                                target_subdir = os.path.join(target_base,relative_path)
+                            else:
+                                target_subdir = target_base
+                                """
+                                场景 1：顶层文件夹（relative_path = ""）
+                                keep_structure and "" → 结果为 False
+                                执行 else，文件直接放到目标根目录，不新建子文件夹，符合预期。
+                                场景 2：进入子文件夹（relative_path = "子文件夹 A"）
+                                keep_structure and "子文件夹A" → 结果为 True
+                                拼接路径、创建对应子目录，保留原结构。
+                                """
+
+                            os.makedirs(target_subdir,exist_ok=True)
+                            target_path = os.path.join(target_subdir, name)
+                            target_path = handle_duplicate_file(target_path)
+
+                            try:
+                                shutil.move(full_path, target_path)
+                                moved_count += 1
+                                print(f"  ✅ 已移动：{name} → {os.path.relpath(target_path, target_base)}")
+
+                            except Exception as e:
+                                error_count += 1
+                                print(f"  ❌ 移动失败：{name} - {e}")
+                        else:
+                            skipped_count += 1
+
+                    elif os.path.isdir(full_path) and recursive:
+                        # 递归处理子文件夹
+                        new_rel_path = os.path.join(relative_path, name) if keep_structure else ""
+                        """
+                        情况 1：keep_structure = True（用户选择「保留原有目录结构」）
+                        把每一层文件夹名都拼接起来，完整记录原始层级，后续移动文件时，就会在目标目录复刻一模一样的文件夹结构
+                        情况 2：keep_structure = False（用户选择「不保留目录结构」）
+                        直接赋值：new_rel_path = ""
+                        相对路径置为空，代表抛弃原有文件夹层级，后续所有文件都会直接平铺放到目标根目录，不会创建子文件夹
+                        """
+                        move_files_by_suffix(full_path, new_rel_path)
+
+            except PermissionError:
+                print(f"⚠️ 权限不足，无法访问：{dir_path}")
+            except Exception as e:
+                print(f"⚠️ 访问{dir_path}时出错：{e}")
+
+        # 开始批量移动
+        move_files_by_suffix(source_dir)#函数调用完成了，这里开始调用自身函数
+
+        # 显示结果
+        print(f"\n📊 批量移动完成！")
+        print(f"  ✅ 成功移动：{moved_count} 个文件")
+        if skipped_count > 0:
+            print(f"  ⏭️ 已跳过：{skipped_count} 个文件（后缀不匹配）")
+        if error_count > 0:
+            print(f"  ❌ 移动失败：{error_count} 个文件")
+
+
+#补充：什么时候用exists，什么时候用isfile和isdir
+#exists 只能证明「路径有东西」，但分不清是文件还是文件夹
+#而isfile和isdir要确保路径存在的同时并判断是否为文件或者文件夹
+
+# 辅助函数：处理重名文件
+def handle_duplicate_file(file_path):
+    """处理重名文件，返回不冲突的文件路径"""
+
+    # 1. 判断：目标文件不存在
+    if not os.path.exists(file_path):
+        return file_path # 路径可用，直接原路返回
+
+    base, ext = os.path.splitext(file_path) #把完整路径拆分为 主文件名 + 后缀名；
+    counter = 1 #用来给重复文件加序号
+
+    while True:
+        new_path = f"{base}_{counter}{ext}" # 拼接新路径：原名称_序号.后缀
+        if not os.path.exists(new_path):
+            print(f"⚠️ 文件已存在，自动重命名为：{os.path.basename(new_path)}")
+            return new_path
+        counter += 1
+        """
+        原路径：E:\目标\图片.jpg，该文件已存在
+        第一次循环：new_path = E:\目标\图片_1.jpg,如果 图片_1.jpg 也存在 → counter 变成 2；
+        循环生成 图片_2.jpg、图片_3.jpg…… 直到找到不存在的路径；
+        """
+
+
+#辅助函数：合并文件夹
+def merge_folders(src_folder,dst_folder):
+    """合并两个文件夹的内容"""
+    os.makedirs(dst_folder, exist_ok=True)
+    #exist_ok=True：如果目标文件夹已经存在，不报错、不重复创建，直接使用现有文件夹
+    for item in os.listdir(src_folder):
+        src_path = os.path.join(src_folder,item)
+        dst_path = os.path.join(dst_folder,item)
+
+        if os.path.isdir(src_path):
+            merge_folders(src_path,dst_path)
+        else:
+            #处理同名文件
+            if os.path.exists(dst_path):
+                dst_path = handle_duplicate_file(dst_path)
+            shutil.move(src_path,dst_path)
+    print(f"✅ 已合并文件夹：{src_folder} → {dst_folder}")
 
 
 
@@ -425,7 +562,6 @@ def func10_file_search():
         print("1 → 导出搜索结果到日志")
         print("2 → 复制某个文件路径到剪贴板")
         print("0 → 返回主菜单")
-
         sub_choice = input("请选择（直接回车返回主菜单）：").strip()
 
         if sub_choice == "1":
