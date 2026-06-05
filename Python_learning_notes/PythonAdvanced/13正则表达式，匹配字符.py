@@ -135,72 +135,159 @@ import re #需要导入re模块
 # '''
 # re20 = re.match('.{7,9}的$','kskbl,真的假的')
 # print(re20.group())
+#
+# ###五.匹配分组
+# ##1. | 匹配任意一个表达式   --常用
+# re21 = re.match('abc|deg','deg')
+# print(re21.group()) #deg 如果左右两边都匹配不到则报错
+#
+# re22 = re.match(r'\d|\S','s234')
+# print(re22.group())
+#
+# ##2. (ab) 将括号中字符作为一个分组   --常用
+# re23 = re.match(r'\w*@(163|qq|4499).com','123@4499.com')
+# print(re23.group()) #123@4499.com
+# print(re23.group(1)) #4499
+#
+# re24 = re.match(r'(\w+)@((qq|163).com)','root@qq.com')
+# print(re24.group(1)) # root 第一个左括号所包含内容，匹配到了root
+# print(re24.group(2)) # qq.com 第二个左括号所包含内容，匹配到了qq.com
+# print(re24.group(3)) # qq 第二个左括号所包含内容，匹配到了qq
+# r'''
+# 1.'\w*@(163|qq|4499).com'理解
+# \w* :字母/数字/下划线，0个或多个 → 123
+# (163|qq|4499) :是或，只能三选一
+# @和.com :原样匹配
+#
+# 2.补充group(序号)
+# group(0) = 整串全部匹配内容（固定自带，不算自定义分组）
+# group(1) = 第 1 个(内容
+# group(2) = 第 2 个(内容
+#
+# (1)数左小括号 ( 个数 = 最大分组号
+# (2)序号不能超过括号总数，超了报错
+# (3)group () /group (0) 永远是完整匹配字符串
+# '''
+#
+# ##3. \num 匹配num匹配到的字符串  ————常在匹配标签时被使用
+# re25 = re.match(r'<(\w*)>\w*</\1>','<html>login</html>')
+# print(re25.group()) #<html>login</html>
+# r'''
+# 1. (\w*)什么意思
+#     分组 1：捕获标签名，字母数字任意个
+# 2. \1什么意思
+#     \1 = 复用第 1 个括号抓到的内容 (html)
+# 3. 为什么要加()
+#     加 () 才有分组、才能被 \1 反向引用，不加括号存不住数据
+# '''
+# re26 = re.match(r'<(\w*)><(\w*)>.*</\2></\1>','<html><body>login</body></html>')
+# print(re26.group()) #<html><body>login</body></html>
+# #注意：从外到内排序，编号从1开始
+#
+# ##4. (?P<name>) 分组起别名
+# ##5. (?P=name) 引用别名为name分组匹配到的字符串
+# re26 = re.match(r'<(?P<L1>\w*)><(?P<L2>\w*)>.*</(?P=L2)></(?P=L1)>','<html><body>login</body></html>')
+# print(re26.group()) #<html><body>login</body></html>
+#
+# #一句话总结：对，就是给\1、\2这类数字分组起名字
+# #日常简单正则：用的少，普通反向引用\1 \2够用
+#
+# ##6.匹配网址 前缀一般是www 后缀为.com/.cn/.org
+# li = ['www.baidu.com','www.python.org','http.jd.cn','www.py.en','www.abc.cn']
+# re27 = re.match(r'www\.\w*\.(com|cn|org)','www.baidu.com')
+# print(re27.group()) #www.baidu.com
+# #注意这里的\.是因为只写一个 . 表示这里匹配任意字符
+#
+# for i in li:
+#     re27 = re.match(r'www\.\w*\.(com|cn|org)', i)
+#     if re27: #等同于re27 != None
+#         print(re27.group())
+#     else:
+#         print(f"The website {i} is wrong")
 
-###五.匹配分组
-##1. | 匹配任意一个表达式   --常用
-re21 = re.match('abc|deg','deg')
-print(re21.group()) #deg 如果左右两边都匹配不到则报错
+###六.高级用法
+#1.search():扫描整个字符串并返回第一个成功匹配的对象，如果不匹配，就返回None
+re28 = re.search("th",'pythonth')
+print(re28.group()) #th
 
-re22 = re.match(r'\d|\S','s234')
-print(re22.group())
+#2.findall():从头到尾匹配，找到所有匹配成功的数据，返回一个列表
+re29 = re.findall(r"\d",'py283932thonth')
+print(re29) #['2', '8', '3', '9', '3', '2']
+print(type(re29)) #<class 'list'>
+#这里不用group,因为findall自己就返回一个列表
 
-##2. (ab) 将括号中字符作为一个分组   --常用
-re23 = re.match(r'\w*@(163|qq|4499).com','123@4499.com')
-print(re23.group()) #123@4499.com
-print(re23.group(1)) #4499
+"""
+总结
+1. re.match (正则，字符串)：只从字符串开头 (第 0 位) 匹配，不往后查找
+    开头匹配成功：Match 对象 → .group()取值
+    开头不满足：直接None
+2.re.search (正则，字符串)：全串检索，找到第一个匹配内容就停止
+    找到：Match 对象 → .group()
+    全串无匹配：None
+    只拿第一个符合的数据
+3. re.findall (正则，字符串)：遍历全串，找出所有匹配内容
+    永远返回列表，匹配为空返回空列表[]
+    不需要调用.group ()，直接使用列表结果
+"""
 
-re24 = re.match(r'(\w+)@((qq|163).com)','root@qq.com')
-print(re24.group(1)) # root 第一个左括号所包含内容，匹配到了root
-print(re24.group(2)) # qq.com 第二个左括号所包含内容，匹配到了qq.com
-print(re24.group(3)) # qq 第二个左括号所包含内容，匹配到了qq
-r'''
-1.'\w*@(163|qq|4499).com'理解
-\w* :字母/数字/下划线，0个或多个 → 123
-(163|qq|4499) :是或，只能三选一
-@和.com :原样匹配
+##3.re.sub(pattern,repl,string,count)
+#pattern:正则表达式（代表需要被替换的，也就是字符串里面的旧内容）
+#repl: 新内容
+#string：字符串
+#count: 指定替换的次数(现在python必须关键字传参 count=)
+re30 = re.sub('bing','bobo','hellobingbing',count=2)
+print(re30) #hellobobobobo
 
-2.补充group(序号)
-group(0) = 整串全部匹配内容（固定自带，不算自定义分组）
-group(1) = 第 1 个(内容
-group(2) = 第 2 个(内容
+re31 = re.sub(r'\d','2','这个月的第30天',count=1)
+print(re31) #这个月的第20天
 
-(1)数左小括号 ( 个数 = 最大分组号
-(2)序号不能超过括号总数，超了报错
-(3)group () /group (0) 永远是完整匹配字符串
-'''
+##4.split(pattern,string,maxsplit)
+#maxsplit 指定最大分割次数
+re32 = re.split(',','hello,python', maxsplit=1)
+print(re32) #['hello', 'python']
 
-##3. \num 匹配num匹配到的字符串  ————常在匹配标签时被使用
-re25 = re.match(r'<(\w*)>\w*</\1>','<html>login</html>')
-print(re25.group()) #<html>login</html>
-r'''
-1. (\w*)什么意思
-    分组 1：捕获标签名，字母数字任意个
-2. \1什么意思
-    \1 = 复用第 1 个括号抓到的内容 (html)
-3. 为什么要加()
-    加 () 才有分组、才能被 \1 反向引用，不加括号存不住数据
-'''
-re26 = re.match(r'<(\w*)><(\w*)>.*</\2></\1>','<html><body>login</body></html>')
-print(re26.group()) #<html><body>login</body></html>
-#注意：从外到内排序，编号从1开始
+###七.贪婪与非贪婪
+#1.贪婪匹配（default）：在满足匹配时，匹配尽可能长的字符串
+re33 = re.match("em*",'emmmm....')
+print(re33.group()) #emmmm
+#2.非贪婪匹配：在满足匹配时，匹配尽可能短的字符串，使用？来表示非贪婪匹配
+re34 = re.match("em*?",'emmmm....')
+print(re34.group()) #e
+re35 = re.match("em+?",'emmmm....')
+print(re35.group()) #em
+"""
+为什么re34最后只打印一个e？
+m*：* → m出现0次/多次，默认吃光所有能匹配的m
+m*?：? → m出现0次/1次，但优先取最少次数 → *?则取0次
+em*?：e先匹配，拿到e； *?要求能不匹配m就不匹配m（取0个m），已经满足正则规则，直接终止匹配
+所以结果只剩e
 
-##4. (?P<name>) 分组起别名
-##5. (?P=name) 引用别名为name分组匹配到的字符串
-re26 = re.match(r'<(?P<L1>\w*)><(?P<L2>\w*)>.*</(?P=L2)></(?P=L1)>','<html><body>login</body></html>')
-print(re26.group()) #<html><body>login</body></html>
+re35: + → 出现1次/多次  ? → m出现0次/1次  +? → m出现1次
 
-#一句话总结：对，就是给\1、\2这类数字分组起名字
-#日常简单正则：用的少，普通反向引用\1 \2够用
+#总结：加上？就是非贪婪匹配
+"""
 
-##6.匹配网址 前缀一般是www 后缀为.com/.cn/.org
-li = ['www.baidu.com','www.python.org','http.jd.cn','www.py.en','www.abc.cn']
-re27 = re.match(r'www\.\w*\.(com|cn|org)','www.baidu.com')
-print(re27.group()) #www.baidu.com
-#注意这里的\.是因为只写一个 . 表示这里匹配任意字符
+re36 = re.match("m{3,5}?","mmmmm")
+print(re36.group()) #mmm
 
-for i in li:
-    re27 = re.match(r'www\.\w*\.(com|cn|org)', i)
-    if re27: #等同于re27 != None
-        print(re27.group())
-    else:
-        print(f"The website {i} is wrong")
+###八.原生字符串
+print(r"sixs\tar")
+re37 = re.match(r"\\",r"\name") #匹配每一个\要用两个\\在正则表达式里
+print(re37.group()) #\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
