@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx -y @playwright/mcp --version)",
+      "Bash(npx -y @playwright/mcp --help)",
+      "WebSearch",
+      "Bash(python -c ' *)",
+      "Bash(python -c \"import py_compile, sys; files = ['main.py','config.py','utils/__init__.py','utils/helpers.py','utils/clipboard.py','utils/logger.py','utils/path_utils.py','core/__init__.py','core/file_operations.py','core/advanced_operations.py','core/search.py','core/compression.py']; errors = []; [errors.append\\(f\\) for f in files if py_compile.compile\\(f, doraise=True\\) is None]; print\\(f'{len\\(files\\)-len\\(errors\\)}/{len\\(files\\)} files passed' if not errors else f'FAIL: {errors}'\\)\")",
+      "Bash(python main.py)",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "playwright"
+  ]
+}
