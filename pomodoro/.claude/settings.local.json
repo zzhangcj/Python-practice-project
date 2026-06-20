@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tasklist //FI \"IMAGENAME eq python.exe\")",
+      "Bash(powershell -Command \"Get-Process python -ErrorAction SilentlyContinue | Select-Object Id, ProcessName, MainWindowTitle\")",
+      "Bash(python -c \"import py_compile; py_compile.compile\\('pomodoro.py', doraise=True\\); print\\('Syntax OK'\\)\")",
+      "Bash(python -c \"import py_compile; py_compile.compile\\('pomodoro.py', doraise=True\\); print\\('OK'\\)\")",
+      "Bash(powershell -Command \"Get-Process python -ErrorAction SilentlyContinue | Stop-Process -Force\")",
+      "Bash(python pomodoro.py)"
+    ]
+  }
+}
