@@ -6,7 +6,14 @@
       "Bash(python -c \"import py_compile; py_compile.compile\\('pomodoro.py', doraise=True\\); print\\('Syntax OK'\\)\")",
       "Bash(python -c \"import py_compile; py_compile.compile\\('pomodoro.py', doraise=True\\); print\\('OK'\\)\")",
       "Bash(powershell -Command \"Get-Process python -ErrorAction SilentlyContinue | Stop-Process -Force\")",
-      "Bash(python pomodoro.py)"
+      "Bash(python pomodoro.py)",
+      "Bash(git config *)",
+      "Bash(npm config *)",
+      "Bash(curl *)"
     ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "python -c \"import json,sys,os; d=json.load(sys.stdin); cwd=os.path.basename(d.get('cwd','')); model=d.get('model','?'); ctx=d.get('contextWindow',{}); pct=round((1-ctx.get('used',0)/max(ctx.get('total',1),1))*100); print(f'\\U0001f4c1 {cwd}  |  \\U0001f916 {model}  |  \\U0001f4ca {pct}%')\""
   }
 }
