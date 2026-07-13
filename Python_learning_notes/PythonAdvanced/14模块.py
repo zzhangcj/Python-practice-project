@@ -123,32 +123,47 @@
 #
 # #3.级别排序
 # #CRITICAL > ERROR > WARNING > INFO > DEBUG > NOTSET
-import logging
-# logging.debug("我是debug")
-# logging.info("我是info")
-# logging.warning("我是warning") #WARNING:root:我是warning
-# logging.error("我是error") #ERROR:root:我是error
-# logging.critical("我是critical") #CRITICAL:root:我是critical
+# import logging
+# # logging.debug("我是debug")
+# # logging.info("我是info")
+# # logging.warning("我是warning") #WARNING:root:我是warning
+# # logging.error("我是error") #ERROR:root:我是error
+# # logging.critical("我是critical") #CRITICAL:root:我是critical
+#
+# #logging默认的level就warning，也就是说，logging只会显示级别大于warning的日志信息
+#
+# #4.logging.basicCongfig() #配置root logger的参数
+# #  （1）filename:指定日志文件的文件名，所有会显示的日志都会存放到这个文件中去
+# logging.basicConfig(filename='log.log')
+# logging.debug("debug")
+# logging.info("info")
+# logging.warning("warning")
+# logging.error("error")
+# logging.critical("critical")
+# #  （2）filemode:文件的打开方式，默认是a，追加模式
+# #   logging.basicConfig(filename='log.log',filemode='a')
+# #  （3）level:指定日志显示级别，默认是警告信息warning
+# #   logging.basicConfig(filename='log.log',filemode='w',level=logging.NOTSET)
+# #   这里所有信息都能显示，包括debug，info
+# #   （4）format:指定日志信息的输出格式
+# #   logging.basicConfig(filename='log.log',filemode='w',level=logging.NOTSET,format='%(levelname)s:%(asctime)s\t%(message)s')
 
-#logging默认的level就warning，也就是说，logging只会显示级别大于warning的日志信息
 
-#4.logging.basicCongfig() #配置root logger的参数
-#  （1）filename:指定日志文件的文件名，所有会显示的日志都会存放到这个文件中去
-logging.basicConfig(filename='log.log')
-logging.debug("debug")
-logging.info("info")
-logging.warning("warning")
-logging.error("error")
-logging.critical("critical")
-#  （2）filemode:文件的打开方式，默认是a，追加模式
-#   logging.basicConfig(filename='log.log',filemode='a')
-#  （3）level:指定日志显示级别，默认是警告信息warning
-#   logging.basicConfig(filename='log.log',filemode='w',level=logging.NOTSET)
-#   这里所有信息都能显示，包括debug，info
-#   （4）format:指定日志信息的输出格式
-#   logging.basicConfig(filename='log.log',filemode='w',level=logging.NOTSET,format='%(levelname)s:%(asctime)s\t%(message)s')
+## 五.random模块
+#作用：用于实现各种分布的伪随机数生成器，可以根据不同实数分布来随机生成值
+import random
+#1.random.random() 产生大于0且小于1之间的小数
+print(random.random()) #每一次打印结果都不一样
 
+#2. random.uniform() #产生指定范围的随机小数
+print(random.uniform(1,3))
 
+#3.random.randint() #产生指定范围内的随机整数，包括开头结尾，即闭区间
+print(random.randint(1,3))
+
+#4. random.randrange(start,stop,[step]) #产生[start,stop)范围内的整数
+#step 指定产生随机的步长，随机选择一个数据
+print(random.randrange(2,5,2)) #结果在2和4两个数之间变化
 
 
 

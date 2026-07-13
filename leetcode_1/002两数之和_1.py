@@ -45,6 +45,12 @@ class Solution3:
                 return [i,cache[other]]
             cache[item] = i
 
+#字典 dict 没有 append 方法
+# 新增 / 修改键值统一语法：
+# 字典[key] = 值
+# 如果 key 不存在：新增一组键值对；
+# 如果 key 已经存在：覆盖原来的 value
+
 
 '''
 当需要记忆功能的时候：
