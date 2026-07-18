@@ -24,7 +24,7 @@ class Solution:
         for i,item in enumerate(preSum):
             other = item -k
             if other in cache:
-                count+=cache[other]## 当前前缀和可与前面cache内所有other各组成一段合法子数组
+                count+=cache[other] #当前前缀和可与前面cache内所有other各组成一段合法子数组
             cache[item]=cache.get(item,0)+1
             # 计算other出现的次数，对应存在符合需求的子数组个数
         return count
