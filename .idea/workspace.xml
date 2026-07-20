@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/leetcode_1/015合并两个有序链表_26.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/016环形链表_141.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/017环形链表二_142.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_exercise/review2_函数.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_exercise/review1_基础数据类型.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_exercise/review1_基础数据类型.py" afterDir="false" />
-    </list>
+    <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
