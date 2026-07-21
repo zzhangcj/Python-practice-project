@@ -115,3 +115,26 @@ def add_count():
 
 add_count()  # 输出：1
 '''
+a = 10
+def modify():
+    # 在此补全代码
+    global a
+    a = 20
+
+modify()
+print(a)
+
+# 【代码输出题】写出运行结果
+x=30
+def outer():
+    x = 10
+    def inner():
+        nonlocal x
+        x = 20
+        print("inner x:", x) #inner x: 20
+    inner()
+    print("outer x:", x) #outer x: 20
+
+outer()
+print(x) #30
+#nonlocal关键字用于在嵌套内层函数中，修改外层（闭包）函数的变量

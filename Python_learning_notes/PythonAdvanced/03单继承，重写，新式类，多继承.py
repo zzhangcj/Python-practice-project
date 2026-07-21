@@ -1,113 +1,113 @@
-# ### 二.继承
-#
-# #含义：让类和类之间转变为父子关系，子类默认继承父类的属性和方法
-# #语法：class 类名(父类名)：
-# #         代码块
-#
-#
-#
-# ##1.单继承
-# class Person1:
-#     def eat(self):
-#         print("I can eat!")
-#     def sing(self):
-#         print('I am good at singing!')
-#
-# class Girl(Person1): #Person的子类
-#     pass #占位符，代码里面的类下面不写任何东西的时候使用
-#          #作用是自动跳过，不产生报错
-# class Boy(Person1):
-#     None #补充：也可以写None
-#
-# # pass ✅ 正确、无警告、专门用于占位
-# # None ⚠️ 表示空，无用代码、编辑器会黄色警告
-#
-# girl = Girl()
-# girl.eat() #I can eat!
-# girl.sing() #I am good at singing!
-# boy = Boy()
-# boy.eat() #I can eat!
-# boy.sing() #I am good at singing!
-# '''
-# 总结：子类可以继承父类的属性和方法，就算子类没有，也可以使用父类的
-# '''
-#
-#
-# ##2.多重继承（继承的传递）
-# #A/B/C  C(子类)继承于B(父类)，B(子类)继承C(父类)，C类具有A/B的属性和方法
-#
-# class Father:
-#     def eat(self):
-#         print('吃饭')
-#     def sleep(self):
-#         print('睡觉')
-#
-# class Son(Father):
-#     pass
-# son = Son()
-#
-# class Grandson(Son):
-#     pass
-# gson = Grandson()
-# gson.eat()  #吃饭
-# gson.sleep()#睡觉
-#
-# #继承的传递性就是子类拥有父类以及父类的父类的属性和方法
-#
-# ##3.重写：子类中定义与父类相同的名称的方法
-# #3.1 覆盖子类的方法：
-# class Person2:
-#     def property(self):
-#         print("One million needs to be inherited")
-# class Man(Person2):
-#     def property(self):
-#         print("I can earn 10 million by myself")
-#
-# man = Man()
-# man.property()
-# #I can earn 10 million by myself
-#
-# #3.2 对父类的方法进行扩展：继承父类的方法，子类也可以增加自己的功能
-# #方法(1)：父类名.方法名(self)
-# #Person3.property(self)
-#
-# #方法(2)：super().方法名()---推荐使用
-# #super在python里面是一个特殊的类，super()表示使用super类创建出来的对象，可以调用父类中的方法
-#
-# #方法(3).super(子类名,self).方法名()
-# #完整、啰嗦版的super(), Python2 时代的老式写法，现在 Python3 基本不用了
-# """
-# super() 就是自动帮你找到 父类的一个代理对象，不用你手动写死父类名字，直接调用父类的方法。
-# 可以类比# 不推荐Man.__play(self)  # 推荐self.__play()
-#
-# 方法1的缺陷
-# 缺点 1：类名写死了，改类名全要改
-# 以后如果要把父类 Person3 改名叫 PersonNew
-# 代码里所有 Person3.property(self) 全都要手动改，漏一个就报错
-# 而super()自动适配
-# 缺点 2：多继承的时候直接废了
-# 多继承，一个子类有好几个父类，根本不知道该写哪个父类名
-# super() 能自动帮你按顺序找。
-# """
-#
-# class Person3:
-#     def property(self):
-#         print("One million needs to be inherited")
-#     def sleep(self):
-#         print("I like sleeping")
-# class Man1(Person3):
-#     def property(self):
-#         Person3.property(self)
-#         super().property()
-#         super().sleep()
-#         print("I can earn 10 million by myself")
-#
-# m1 = Man1()
-# m1.property()
-# # One million needs to be inherited---Person3.property(self)
-# # One million needs to be inherited---super().property()
-# # I like sleeping
-# # I can earn 10 million by myself
+### 二.继承
+
+#含义：让类和类之间转变为父子关系，子类默认继承父类的属性和方法
+#语法：class 类名(父类名)：
+#         代码块
+
+
+
+##1.单继承
+class Person1:
+    def eat(self):
+        print("I can eat!")
+    def sing(self):
+        print('I am good at singing!')
+
+class Girl(Person1): #Person的子类
+    pass #占位符，代码里面的类下面不写任何东西的时候使用
+         #作用是自动跳过，不产生报错
+class Boy(Person1):
+    None #补充：也可以写None
+
+# pass ✅ 正确、无警告、专门用于占位
+# None ⚠️ 表示空，无用代码、编辑器会黄色警告
+
+girl = Girl()
+girl.eat() #I can eat!
+girl.sing() #I am good at singing!
+boy = Boy()
+boy.eat() #I can eat!
+boy.sing() #I am good at singing!
+'''
+总结：子类可以继承父类的属性和方法，就算子类没有，也可以使用父类的
+'''
+
+
+##2.多重继承（继承的传递）
+#A/B/C  C(子类)继承于B(父类)，B(子类)继承C(父类)，C类具有A/B的属性和方法
+
+class Father:
+    def eat(self):
+        print('吃饭')
+    def sleep(self):
+        print('睡觉')
+
+class Son(Father):
+    pass
+son = Son()
+
+class Grandson(Son):
+    pass
+gson = Grandson()
+gson.eat()  #吃饭
+gson.sleep()#睡觉
+
+#继承的传递性就是子类拥有父类以及父类的父类的属性和方法
+
+##3.重写：子类中定义与父类相同的名称的方法
+#3.1 覆盖子类的方法：
+class Person2:
+    def property(self):
+        print("One million needs to be inherited")
+class Man(Person2):
+    def property(self):
+        print("I can earn 10 million by myself")
+
+man = Man()
+man.property()
+#I can earn 10 million by myself
+
+#3.2 对父类的方法进行扩展：继承父类的方法，子类也可以增加自己的功能
+#方法(1)：父类名.方法名(self)
+#Person3.property(self)
+
+#方法(2)：super().方法名()---推荐使用
+#super在python里面是一个特殊的类，super()表示使用super类创建出来的对象，可以调用父类中的方法
+
+#方法(3).super(子类名,self).方法名()
+#完整、啰嗦版的super(), Python2 时代的老式写法，现在 Python3 基本不用了
+"""
+super() 就是自动帮你找到 父类的一个代理对象，不用你手动写死父类名字，直接调用父类的方法。
+可以类比# 不推荐Man.__play(self)  # 推荐self.__play()
+
+方法1的缺陷
+缺点 1：类名写死了，改类名全要改
+以后如果要把父类 Person3 改名叫 PersonNew
+代码里所有 Person3.property(self) 全都要手动改，漏一个就报错
+而super()自动适配
+缺点 2：多继承的时候直接废了
+多继承，一个子类有好几个父类，根本不知道该写哪个父类名
+super() 能自动帮你按顺序找。
+"""
+
+class Person3:
+    def property(self):
+        print("One million needs to be inherited")
+    def sleep(self):
+        print("I like sleeping")
+class Man1(Person3):
+    def property(self):
+        Person3.property(self)
+        super().property()
+        super().sleep()
+        print("I can earn 10 million by myself")
+
+m1 = Man1()
+m1.property()
+# One million needs to be inherited---Person3.property(self)
+# One million needs to be inherited---super().property()
+# I like sleeping
+# I can earn 10 million by myself
 
 
 

@@ -35,6 +35,20 @@ class Solution2:
             elif my_sum <target:
                 left+=1
 
+#优化双指针（思路没变，代码更简洁优美）
+class Solution3:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+        n = len(numbers)
+        left = 0
+        right = n - 1
+        while left < right:
+            if numbers[left] + numbers[right] > target:
+                right -= 1
+            elif numbers[left] + numbers[right] < target:
+                left += 1
+            else:
+                break
+        return [left+1, right+1]
 
 """
 总结：
