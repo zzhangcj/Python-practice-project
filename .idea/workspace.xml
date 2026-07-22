@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/leetcode_1/018有效的括号_20.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/019每日温度_739.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/020最小栈_155.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_exercise/review3_面向对象.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/021基本计算器Ⅱ_227.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/022字符串解码_394.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/023用栈实现队列_232.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python_exercise/review4_文件操作.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python_exercise/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/03单继承，重写，新式类，多继承.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/03单继承，重写，新式类，多继承.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/04多态，静态方法，类方法.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/04多态，静态方法，类方法.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/003两数之和_输入有序数组_167.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/003两数之和_输入有序数组_167.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/004长度最小的子数组_209.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/004长度最小的子数组_209.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/学习清单.txt" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/学习清单.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_exercise/review2_函数.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_exercise/review2_函数.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +26,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/leetcode_1/021基本计算器Ⅱ_227.py" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -52,11 +50,13 @@
     &quot;Python.006删除有序数组中的重复项_26.executor&quot;: &quot;Run&quot;,
     &quot;Python.008螺旋矩阵_59.executor&quot;: &quot;Run&quot;,
     &quot;Python.018有效的括号_20.executor&quot;: &quot;Run&quot;,
+    &quot;Python.021基本计算器Ⅱ_227.executor&quot;: &quot;Run&quot;,
     &quot;Python.14模块.executor&quot;: &quot;Run&quot;,
     &quot;Python.questions_1.executor&quot;: &quot;Run&quot;,
     &quot;Python.review1_基础数据类型 (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.review2_函数.executor&quot;: &quot;Run&quot;,
     &quot;Python.review3_面向对象.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review4_文件操作.executor&quot;: &quot;Run&quot;,
     &quot;Python.review_1.executor&quot;: &quot;Run&quot;,
     &quot;Python.练习.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -64,29 +64,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.review3_面向对象">
-    <configuration name="练习" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Python-practice-project" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Python_learning_notes/PythonBasic" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Python_learning_notes/PythonBasic/练习.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.review4_文件操作">
     <configuration name="018有效的括号_20" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-practice-project" />
       <option name="ENV_FILES" value="" />
@@ -109,7 +87,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="review1_基础数据类型 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="021基本计算器Ⅱ_227" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-practice-project" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -118,11 +96,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_exercise" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leetcode_1" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_exercise/review1_基础数据类型.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leetcode_1/021基本计算器Ⅱ_227.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -175,13 +153,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="review4_文件操作" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Python-practice-project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_exercise" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_exercise/review4_文件操作.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.review4_文件操作" />
+        <item itemvalue="Python.021基本计算器Ⅱ_227" />
         <item itemvalue="Python.review3_面向对象" />
         <item itemvalue="Python.review2_函数" />
         <item itemvalue="Python.018有效的括号_20" />
-        <item itemvalue="Python.review1_基础数据类型 (1)" />
-        <item itemvalue="Python.练习" />
       </list>
     </recent_temporary>
   </component>
