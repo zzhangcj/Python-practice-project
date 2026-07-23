@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/leetcode_1/021基本计算器Ⅱ_227.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/022字符串解码_394.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/023用栈实现队列_232.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_exercise/review4_文件操作.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_exercise/test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/024二叉树的前序遍历_144.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/025二叉树的最大深度.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/026二叉树的最近公共祖先_236.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_exercise/questions_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/questions_1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_exercise/review1_基础数据类型.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/review1_基础数据类型.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_exercise/review2_函数.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/review2_函数.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_exercise/review3_面向对象.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/review3_面向对象.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_exercise/review4_文件操作.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/review4_文件操作.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_exercise/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/test.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -201,5 +205,15 @@
       <updated>1781756601036</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/python_practice1/utils/logger.py</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

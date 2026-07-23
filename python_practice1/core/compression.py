@@ -4,18 +4,19 @@ import zipfile
 
 from config import DEFAULT_COMPRESS_LEVEL
 from utils.path_utils import input_path, normalize_path
-from utils.helpers import format_file_size, get_folder_size
+from utils.helpers import format_file_size, get_folder_size, safe_input
 
 
 # ===== 功能11：文件压缩 =====
 def func11_compress_file():
     print("\n===== 功能11：文件压缩 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
 
     # 选择压缩类型
     print("压缩类型：")
     print("1 → 压缩单个文件")
     print("2 → 压缩整个文件夹")
-    compress_type = input("请选择（1/2）：").strip()
+    compress_type = safe_input("请选择（1/2）：").strip()
 
     if compress_type not in ['1', '2']:
         print("❌ 输入无效")
@@ -39,7 +40,7 @@ def func11_compress_file():
         default_zip_name = os.path.basename(source_path) + ".zip"
 
     # 获取文件保存路径
-    target_dir = input("请输入压缩文件保存目录（直接回车保存到源文件所在目录）：").strip().strip('"').strip("'")
+    target_dir = safe_input("请输入压缩文件保存目录（直接回车保存到源文件所在目录）：").strip().strip('"').strip("'")
     if not target_dir:
         target_dir = os.path.dirname(source_path)
     else:
@@ -50,7 +51,7 @@ def func11_compress_file():
         return
 
     # 获取压缩文件名
-    zip_name = input(f"请输入压缩文件名（直接回车使用默认：{default_zip_name}）：").strip()
+    zip_name = safe_input(f"请输入压缩文件名（直接回车使用默认：{default_zip_name}）：").strip()
     if not zip_name:
         zip_name = default_zip_name
     if not zip_name.endswith('.zip'):
@@ -59,13 +60,13 @@ def func11_compress_file():
 
     # 判断是否已存在
     if os.path.exists(zip_path):
-        overwrite = input("⚠️ 文件已存在，是否覆盖？(y/n)：").strip().lower()
+        overwrite = safe_input("⚠️ 文件已存在，是否覆盖？(y/n)：").strip().lower()
         if overwrite != 'y':
             print("❌ 压缩已取消")
             return
 
     # 设置压缩等级
-    compress_level = input("压缩等级（1-9，数值越大压缩率越高但速度越慢，默认6）：").strip()
+    compress_level = safe_input("压缩等级（1-9，数值越大压缩率越高但速度越慢，默认6）：").strip()
     try:
         compress_level = int(compress_level) if compress_level else DEFAULT_COMPRESS_LEVEL
         compress_level = max(1, min(9, compress_level))
@@ -108,10 +109,11 @@ def func11_compress_file():
 # ===== 功能12：文件解压 =====
 def func12_extract_file():
     print("\n===== 功能12：文件解压 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
 
     # 获取压缩文件路径
     while True:
-        zip_path = input("请输入要解压的zip文件路径：").strip().strip("'").strip('"')
+        zip_path = safe_input("请输入要解压的zip文件路径：").strip().strip("'").strip('"')
         zip_path = os.path.normpath(zip_path)
         if os.path.isfile(zip_path) and zip_path.lower().endswith('.zip'):
             break
@@ -127,7 +129,7 @@ def func12_extract_file():
 
     # 获取解压目标路径
     default_extract_dir = os.path.splitext(zip_path)[0]
-    extract_dir = input(f"请输入解压目标路径（直接回车使用：{default_extract_dir}）：").strip().strip('"').strip("'")
+    extract_dir = safe_input(f"请输入解压目标路径（直接回车使用：{default_extract_dir}）：").strip().strip('"').strip("'")
 
     if not extract_dir:
         extract_dir = default_extract_dir
@@ -139,7 +141,7 @@ def func12_extract_file():
         print("⚠️ 目标路径已存在")
 
         while True:
-            choice = input("请选择：1 → 覆盖并清空 / 2 → 合并文件 / 3 → 取消操作：").strip()
+            choice = safe_input("请选择：1 → 覆盖并清空 / 2 → 合并文件 / 3 → 取消操作：").strip()
 
             if choice == '1':
                 try:
@@ -170,7 +172,7 @@ def func12_extract_file():
     print("2 → 仅解压特定类型文件（如 .txt, .jpg）")
     print("3 → 查看压缩包内容")
 
-    sub_choice = input("请选择（直接回车使用选项1）：").strip()
+    sub_choice = safe_input("请选择（直接回车使用选项1）：").strip()
 
     try:
         with zipfile.ZipFile(zip_path, 'r') as zipf:
@@ -185,13 +187,13 @@ def func12_extract_file():
                     else:
                         print(f"{i:3d}. {name} [文件夹]")
 
-                confirm = input("\n是否解压？(y/n)：").strip().lower()
+                confirm = safe_input("\n是否解压？(y/n)：").strip().lower()
                 if confirm != 'y':
                     print("❌ 解压已取消")
                     return
 
             elif sub_choice == '2':
-                extensions = input("请输入要解压的文件扩展名（多个用逗号分隔，如 .txt,.jpg）：").strip()
+                extensions = safe_input("请输入要解压的文件扩展名（多个用逗号分隔，如 .txt,.jpg）：").strip()
                 ext_list = [ext.strip().lower() for ext in extensions.split(',')]
                 files_to_extract = []
                 for name in zipf.namelist():

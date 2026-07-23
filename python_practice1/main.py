@@ -13,6 +13,7 @@ from core.file_operations import (
 from core.advanced_operations import func4_move_file
 from core.search import func10_file_search
 from core.compression import func11_compress_file, func12_extract_file
+from utils.helpers import ReturnToMenu
 
 
 def main():
@@ -37,35 +38,38 @@ def main():
 
         choice = input("请输入功能编号：")
 
-        if choice == "1":
-            func1_show_files()
-        elif choice == "2":
-            func2_get_suffix()
-        elif choice == "3":
-            func3_make_folder()
-        elif choice == "4":
-            func4_move_file()
-        elif choice == "5":
-            func5_copy_file()
-        elif choice == "6":
-            func6_delete_file()
-        elif choice == "7":
-            func7_delete_folder()
-        elif choice == "8":
-            func8_rename_file()
-        elif choice == "9":
-            func9_log_output()
-        elif choice == "10":
-            func10_file_search()
-        elif choice == "11":
-            func11_compress_file()
-        elif choice == "12":
-            func12_extract_file()
-        elif choice == "0":
-            print("程序退出，再见！")
-            break
-        else:
-            print("输入错误，请重新选择！")
+        try:
+            if choice == "1":
+                func1_show_files()
+            elif choice == "2":
+                func2_get_suffix()
+            elif choice == "3":
+                func3_make_folder()
+            elif choice == "4":
+                func4_move_file()
+            elif choice == "5":
+                func5_copy_file()
+            elif choice == "6":
+                func6_delete_file()
+            elif choice == "7":
+                func7_delete_folder()
+            elif choice == "8":
+                func8_rename_file()
+            elif choice == "9":
+                func9_log_output()
+            elif choice == "10":
+                func10_file_search()
+            elif choice == "11":
+                func11_compress_file()
+            elif choice == "12":
+                func12_extract_file()
+            elif choice == "0":
+                print("程序退出，再见！")
+                break
+            else:
+                print("输入错误，请重新选择！")
+        except ReturnToMenu:
+            pass  # 已在 safe_input 中打印退出提示，直接回到主菜单循环
 
 
 if __name__ == "__main__":

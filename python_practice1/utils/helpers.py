@@ -5,6 +5,25 @@ import datetime
 from config import SEARCH_RESULT_LOG
 
 
+# ===== 统一退出机制：自定义异常 + 安全输入 =====
+class ReturnToMenu(Exception):
+    """用户输入退出指令时抛出的异常，用于从子功能返回主菜单"""
+    pass
+
+
+def safe_input(prompt=""):
+    """
+    带退出支持的 input() 包装函数。
+    用户输入 q / Q / 0 时，打印退出提示并抛出 ReturnToMenu 异常。
+    """
+    user_input = input(prompt)
+    stripped = user_input.strip()
+    if stripped in ("q", "Q", "0"):
+        print("已退出当前功能，返回主菜单")
+        raise ReturnToMenu()
+    return user_input
+
+
 # ===== 辅助函数：处理重名文件 =====
 def handle_duplicate_file(file_path):
     """处理重名文件，返回不冲突的文件路径"""

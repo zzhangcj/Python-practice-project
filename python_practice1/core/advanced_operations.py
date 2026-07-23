@@ -2,19 +2,20 @@ import os
 import shutil
 
 from utils.path_utils import input_path, normalize_path
-from utils.helpers import handle_duplicate_file, merge_folders
+from utils.helpers import handle_duplicate_file, merge_folders, safe_input
 
 
 # ===== 功能4：移动文件/文件夹 =====
 def func4_move_file():
     print("\n===== 功能4：移动文件/文件夹 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
 
     # 选择移动类型
     print("移动类型：")
     print("1 → 移动单个文件")
     print("2 → 移动文件夹")
     print("3 → 批量移动文件（按后缀）")
-    move_type = input("请选择（1/2/3）：").strip()
+    move_type = safe_input("请选择（1/2/3）：").strip()
 
     if move_type == "1":
         # 移动单个文件
@@ -61,7 +62,7 @@ def func4_move_file():
 
         if os.path.exists(target_path):
             print(f"⚠️ 目标位置已存在同名文件夹：{os.path.basename(source)}")
-            choice = input("请选择：1 → 覆盖并替换 / 2 → 合并文件夹 / 3 → 取消操作：").strip()
+            choice = safe_input("请选择：1 → 覆盖并替换 / 2 → 合并文件夹 / 3 → 取消操作：").strip()
 
             if choice == '1':
                 try:
@@ -107,7 +108,7 @@ def func4_move_file():
             print("❌ 目标根目录不存在，请重新输入！")
 
         # 输入要移动的后缀
-        extensions = input("请输入要移动的文件后缀（多个用逗号分隔，如 .txt,.jpg，直接回车移动所有文件）：").strip()
+        extensions = safe_input("请输入要移动的文件后缀（多个用逗号分隔，如 .txt,.jpg，直接回车移动所有文件）：").strip()
 
         if extensions:
             ext_list = [ext.strip().lower() for ext in extensions.split(',')]
@@ -116,11 +117,11 @@ def func4_move_file():
             ext_list = None  # 移动所有文件
 
         # 是否递归子文件夹
-        recursive = input("是否递归搜索子文件夹？(y/n，默认y)：").strip().lower()
+        recursive = safe_input("是否递归搜索子文件夹？(y/n，默认y)：").strip().lower()
         recursive = recursive != 'n'
 
         # 是否保持目录结构
-        keep_structure = input("是否保持目录结构？(y/n，默认y)：").strip().lower()
+        keep_structure = safe_input("是否保持目录结构？(y/n，默认y)：").strip().lower()
         keep_structure = keep_structure != 'n'
 
         print(f"\n🔄 正在扫描并移动文件...")

@@ -2,13 +2,14 @@ import os
 import datetime
 
 from utils.path_utils import input_path, normalize_path
-from utils.helpers import format_file_size, export_search_result_to_log
+from utils.helpers import format_file_size, export_search_result_to_log, safe_input
 from utils.clipboard import copy_to_clipboard
 
 
 # ===== 功能10：文件搜索 =====
 def func10_file_search():
     print("\n===== 功能10：文件搜索 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
 
     while True:
         search_path = input_path("请输入要搜索的文件夹路径：")
@@ -16,14 +17,14 @@ def func10_file_search():
             break
         print("输入的路径错误，请重新输入！")
 
-    keyword = input("请输入要搜索的文件名关键字：").strip()
+    keyword = safe_input("请输入要搜索的文件名关键字：").strip()
 
     # 是否递归子文件夹
-    recursive = input("是否递归子文件夹？(y/n):").lower()
+    recursive = safe_input("是否递归子文件夹？(y/n):").lower()
     recursive = recursive != 'n'
 
     # 是否区分大小写
-    case_sensitive = input("是否区分大小写？(y/n):").lower()
+    case_sensitive = safe_input("是否区分大小写？(y/n):").lower()
     case_sensitive = (case_sensitive == "y")
 
     print(f"正在搜索：{search_path} 关键字：{keyword}，递归：{recursive}，区分大小写：{case_sensitive}.....")
@@ -70,13 +71,13 @@ def func10_file_search():
         print("1 → 导出搜索结果到日志")
         print("2 → 复制某个文件路径到剪贴板")
         print("0 → 返回主菜单")
-        sub_choice = input("请选择（直接回车返回主菜单）：").strip()
+        sub_choice = safe_input("请选择（直接回车返回主菜单）：").strip()
 
         if sub_choice == "1":
             export_search_result_to_log(result_files, search_path, keyword)
         elif sub_choice == "2":
             try:
-                idx = int(input(f"请输入要复制的文件编号（1-{len(result_files)}）："))
+                idx = int(safe_input(f"请输入要复制的文件编号（1-{len(result_files)}）："))
                 if 1 <= idx <= len(result_files):
                     copy_to_clipboard(result_files[idx - 1])
                     print("✅ 路径已复制到剪贴板")

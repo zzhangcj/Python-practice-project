@@ -4,13 +4,14 @@ import datetime
 
 from config import LOG_FILE
 from utils.path_utils import input_path, normalize_path
-from utils.helpers import handle_duplicate_file
+from utils.helpers import handle_duplicate_file, safe_input
 from utils.logger import write_log
 
 
 # ===== 功能1：查看文件夹内所有文件 =====
 def func1_show_files():
     print("\n===== 功能1：查看文件夹内所有文件 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
     while True:
         path = input_path("请输入你要查看的文件夹：")
         if os.path.isdir(path):
@@ -31,6 +32,7 @@ def func1_show_files():
 # ===== 功能2：识别文件后缀 =====
 def func2_get_suffix():
     print("\n===== 功能2：识别文件后缀 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
     while True:
         path = input_path("请输入文件地址：")
         if os.path.exists(path):
@@ -56,12 +58,13 @@ def func2_get_suffix():
 # ===== 功能3：自动创建文件夹 =====
 def func3_make_folder():
     print("\n===== 功能3：自动创建文件夹 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
     path = input_path("请输入你要在那里创建文件夹（路径）：")
     if not os.path.exists(path):
         print("路径不存在！")
         return
 
-    folder_path = input("请输入新的文件夹名称：").strip()
+    folder_path = safe_input("请输入新的文件夹名称：").strip()
     new_folder = os.path.join(path, folder_path)
 
     if not os.path.exists(new_folder):
@@ -77,6 +80,7 @@ def func3_make_folder():
 # ===== 功能5：复制文件 =====
 def func5_copy_file():
     print("\n===== 功能5：复制文件 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
     while True:
         source = input_path("请输入要复制的文件完整路径：")
         if os.path.isfile(source):
@@ -104,13 +108,14 @@ def func5_copy_file():
 # ===== 功能6：删除文件 =====
 def func6_delete_file():
     print("\n===== 功能6：删除文件 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
     while True:
         file_path = input_path("请输入要删除的文件完整路径：")
         if os.path.isfile(file_path):
             break
         print("❌ 文件不存在，请重新输入！")
 
-    confirm = input("确定要删除吗？(y/n):")
+    confirm = safe_input("确定要删除吗？(y/n):")
     if confirm.lower() == "y":
         try:
             os.remove(file_path)
@@ -126,13 +131,14 @@ def func6_delete_file():
 # ===== 功能7：删除文件夹 =====
 def func7_delete_folder():
     print("\n===== 功能7：删除文件夹 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
     while True:
         folder_path = input_path("请输入要删除的文件夹完整路径：")
         if os.path.isdir(folder_path):
             break
         print("❌ 文件夹不存在，请重新输入！")
 
-    confirm = input("确定要删除文件夹（包含里面所有文件）吗？(y/n):")
+    confirm = safe_input("确定要删除文件夹（包含里面所有文件）吗？(y/n):")
     if confirm.lower() == "y":
         try:
             shutil.rmtree(folder_path)
@@ -148,13 +154,14 @@ def func7_delete_folder():
 # ===== 功能8：文件重命名 =====
 def func8_rename_file():
     print("\n===== 功能8：文件重命名 =====")
+    print("提示：输入 q 或 0 可随时退出当前功能")
     while True:
         file_path = input_path("请输入要重命名的文件完整路径：")
         if os.path.isfile(file_path):
             break
         print("❌ 文件不存在，请重新输入！")
 
-    new_name = input("请输入新的文件名（包含后缀）：").strip()
+    new_name = safe_input("请输入新的文件名（包含后缀）：").strip()
     if not new_name:
         print("❌ 文件名不能为空！")
         return
@@ -164,7 +171,7 @@ def func8_rename_file():
     # 检查目标文件是否已存在，防止覆盖
     if os.path.exists(new_path):
         print(f"⚠️ 目标文件名已存在：{new_name}")
-        choice = input("请选择：1 → 覆盖 / 2 → 取消：").strip()
+        choice = safe_input("请选择：1 → 覆盖 / 2 → 取消：").strip()
         if choice != '1':
             print("❌ 重命名已取消")
             return
@@ -181,7 +188,8 @@ def func8_rename_file():
 # ===== 功能9：日志输出 =====
 def func9_log_output():
     print("\n===== 功能9：日志输出 =====")
-    log_content = input("请输入要输出的日志内容：")
+    print("提示：输入 q 或 0 可随时退出当前功能")
+    log_content = safe_input("请输入要输出的日志内容：")
     if not log_content:
         print("❌ 日志内容不能为空")
         return
