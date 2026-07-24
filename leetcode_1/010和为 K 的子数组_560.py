@@ -37,7 +37,8 @@ cache.get(item, 0)：
 总结：
 核心公式：preSum[i] - preSum[j] = k 等价于 preSum[j] = preSum[i] - k
 1. preSum[i]是当前遍历到的前缀和item，other=item-k就是我们要找的preSum[j]
-2. cache字典：只存【当前i左侧】所有前缀和，key=前缀和数值，value=该数值出现次数
+2. 明白这个cache字典存的是什么：只存【当前i左侧】所有前缀和，key=前缀和数值，value=该数值出现次数
+对应代码cache[item]=cache.get(item,0)+1
 3. count += cache[other]：每一个历史出现过的other，都能和当前item凑出一段和为k的子数组，全部累加
 4. 顺序必须先查cache、再更新cache：防止匹配到自身，避免统计空数组
 5. 原理等价排列组合的原理（C,即n个里面选2个）：每新增一个相同前缀和，新增配对数=历史已存在的个数，累加得到总子数组数量

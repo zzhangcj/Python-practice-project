@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/leetcode_1/024二叉树的前序遍历_144.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/025二叉树的最大深度.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/026二叉树的最近公共祖先_236.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_exercise/questions_1.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/questions_1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_exercise/review1_基础数据类型.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/review1_基础数据类型.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_exercise/review2_函数.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/review2_函数.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_exercise/review3_面向对象.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/review3_面向对象.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_exercise/review4_文件操作.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/review4_文件操作.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_exercise/test.txt" beforeDir="false" afterPath="$PROJECT_DIR$/python_review/test.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode_1/005无重复字符的最长子串_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/005无重复字符的最长子串_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode_1/006删除有序数组中的重复项_26.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/006删除有序数组中的重复项_26.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode_1/007二分查找_704.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/007二分查找_704.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode_1/010和为 K 的子数组_560.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/010和为 K 的子数组_560.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode_1/011航班预订统计_1109.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/011航班预订统计_1109.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode_1/013缺失的第一个正数_41.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/013缺失的第一个正数_41.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

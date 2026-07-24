@@ -18,6 +18,11 @@ class Solution:
 
         return -1 #当while循环条件不满足，就是说target不在里面
 
+"""
+注意elif 的条件，target是和nums[mid]在比较，而不是mid
+mid是数组下标，确定位置的，target是值，和数组元素进行比较
+"""
+
 
 
 
