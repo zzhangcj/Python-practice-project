@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/leetcode_1/027二叉树的层序遍历_102.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/028验证二叉搜索树_98.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/029从前序与中序遍历序列构造二叉树_105.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/python_review/review5_异常处理.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/005无重复字符的最长子串_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/005无重复字符的最长子串_3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/006删除有序数组中的重复项_26.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/006删除有序数组中的重复项_26.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/007二分查找_704.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/007二分查找_704.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/010和为 K 的子数组_560.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/010和为 K 的子数组_560.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/011航班预订统计_1109.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/011航班预订统计_1109.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/013缺失的第一个正数_41.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/013缺失的第一个正数_41.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode_1/学习清单.txt" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/学习清单.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +57,7 @@
     &quot;Python.review2_函数.executor&quot;: &quot;Run&quot;,
     &quot;Python.review3_面向对象.executor&quot;: &quot;Run&quot;,
     &quot;Python.review4_文件操作.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review5_异常处理.executor&quot;: &quot;Run&quot;,
     &quot;Python.review_1.executor&quot;: &quot;Run&quot;,
     &quot;Python.练习.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
@@ -65,29 +65,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.review4_文件操作">
-    <configuration name="018有效的括号_20" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Python-practice-project" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/leetcode_1" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/leetcode_1/018有效的括号_20.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.review5_异常处理">
     <configuration name="021基本计算器Ⅱ_227" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-practice-project" />
       <option name="ENV_FILES" value="" />
@@ -176,13 +154,35 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="review5_异常处理" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Python-practice-project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_review" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_review/review5_异常处理.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.review5_异常处理" />
         <item itemvalue="Python.review4_文件操作" />
         <item itemvalue="Python.021基本计算器Ⅱ_227" />
         <item itemvalue="Python.review3_面向对象" />
         <item itemvalue="Python.review2_函数" />
-        <item itemvalue="Python.018有效的括号_20" />
       </list>
     </recent_temporary>
   </component>
