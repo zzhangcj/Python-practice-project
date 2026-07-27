@@ -155,7 +155,7 @@ for i in range(5):
     print(next(gen)) #结果和1.1相同
 
 ##2.生成器函数
-#python中使用了yiel关键字的函数就称之为生成器函数
+#python中使用了yield关键字的函数就称之为生成器函数
 
 l1 = []
 def test():
