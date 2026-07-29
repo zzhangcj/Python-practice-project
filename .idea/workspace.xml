@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/leetcode_1/030组合_77.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/031全排列_46.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/032子集_78.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_review/review6_迭代器.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_review/review7_生成器.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_review/review8_装饰器.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/033组合总和_39.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/034组合总和Ⅱ_40.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/035分割回文串_131.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/08可迭代对象，迭代器.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/08可迭代对象,迭代器,生成器.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_learning_notes/PythonBasic/16递归函数，闭包，装饰器和语法糖.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python_learning_notes/PythonBasic/16递归函数，闭包，装饰器和语法糖.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_learning_notes/PythonBasic/练习.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python_learning_notes/PythonBasic/练习.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/学习清单.txt" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/学习清单.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,32 +40,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.001两数整数相加.executor": "Run",
-    "Python.003两数之和_输入有序数组_167.executor": "Run",
-    "Python.006删除有序数组中的重复项_26.executor": "Run",
-    "Python.008螺旋矩阵_59.executor": "Run",
-    "Python.018有效的括号_20.executor": "Run",
-    "Python.021基本计算器Ⅱ_227.executor": "Run",
-    "Python.14模块.executor": "Run",
-    "Python.questions_1.executor": "Run",
-    "Python.review1_基础数据类型 (1).executor": "Run",
-    "Python.review2_函数.executor": "Run",
-    "Python.review3_面向对象.executor": "Run",
-    "Python.review4_文件操作.executor": "Run",
-    "Python.review5_异常处理.executor": "Run",
-    "Python.review6_迭代器.executor": "Run",
-    "Python.review7_生成器.executor": "Run",
-    "Python.review8_装饰器.executor": "Run",
-    "Python.review_1.executor": "Run",
-    "Python.练习.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.001两数整数相加.executor&quot;: &quot;Run&quot;,
+    &quot;Python.003两数之和_输入有序数组_167.executor&quot;: &quot;Run&quot;,
+    &quot;Python.006删除有序数组中的重复项_26.executor&quot;: &quot;Run&quot;,
+    &quot;Python.008螺旋矩阵_59.executor&quot;: &quot;Run&quot;,
+    &quot;Python.018有效的括号_20.executor&quot;: &quot;Run&quot;,
+    &quot;Python.021基本计算器Ⅱ_227.executor&quot;: &quot;Run&quot;,
+    &quot;Python.14模块.executor&quot;: &quot;Run&quot;,
+    &quot;Python.questions_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review1_基础数据类型 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.review2_函数.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review3_面向对象.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review4_文件操作.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review5_异常处理.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review6_迭代器.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review7_生成器.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review8_装饰器.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.练习.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Python.review8_装饰器">
     <configuration name="练习" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-practice-project" />
