@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/leetcode_1/036单词搜索_79.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/037岛屿数量_200.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_1/038被围绕的区域_130.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/python_review/review9_包和模块.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/039腐烂的橘子_994.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/040二进制矩阵中的最短路径_1091.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_1/041课程表_207.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/学习清单.txt" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/学习清单.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
