@@ -1,0 +1,13 @@
+# 虚拟环境        ←注释：下面是忽略虚拟环境
+.venv/
+venv/
+
+# pycharm配置     ←注释：下面忽略pycharm生成的.idea文件夹
+.idea/
+
+# python缓存      ←注释：忽略Python运行出来的缓存文件
+__pycache__/
+*.pyc
+
+# vscode          ←注释：下面忽略vscode编辑器的本地配置文件夹
+.vscode/

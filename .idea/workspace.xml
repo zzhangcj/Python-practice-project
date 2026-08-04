@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/leetcode_2/042合并两个有序数组_88.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +48,8 @@
     &quot;Python.018有效的括号_20.executor&quot;: &quot;Run&quot;,
     &quot;Python.021基本计算器Ⅱ_227.executor&quot;: &quot;Run&quot;,
     &quot;Python.14模块.executor&quot;: &quot;Run&quot;,
+    &quot;Python.1_异步与同步 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.1_异步与同步.executor&quot;: &quot;Run&quot;,
     &quot;Python.questions_1.executor&quot;: &quot;Run&quot;,
     &quot;Python.review1_基础数据类型 (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.review2_函数.executor&quot;: &quot;Run&quot;,
@@ -64,7 +66,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.review8_装饰器">
+  <component name="RunManager" selected="Python.1_异步与同步 (1)">
     <configuration name="练习" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-practice-project" />
       <option name="ENV_FILES" value="" />
@@ -87,7 +89,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="review5_异常处理" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="1_异步与同步 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-practice-project" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -96,11 +98,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_review" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend_practice/Code" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_review/review5_异常处理.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend_practice/Code/1_异步与同步.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -109,7 +111,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="review6_迭代器" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="1_异步与同步" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-practice-project" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -118,11 +120,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_review" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend_practice" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_review/review6_迭代器.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend_practice/1_异步与同步.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -177,11 +179,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.1_异步与同步 (1)" />
+        <item itemvalue="Python.1_异步与同步" />
         <item itemvalue="Python.review8_装饰器" />
         <item itemvalue="Python.练习" />
         <item itemvalue="Python.review7_生成器" />
-        <item itemvalue="Python.review6_迭代器" />
-        <item itemvalue="Python.review5_异常处理" />
       </list>
     </recent_temporary>
   </component>
