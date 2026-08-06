@@ -5,8 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/leetcode_2/042合并两个有序数组_88.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_2/043移除元素_27.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_2/044验证回文串_125.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Python-practice-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Python-practice-project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/09线程，多线程，互斥锁.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/09线程，多线程，互斥锁.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/questions_1.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/review1_基础数据类型.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/review2_函数.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/review3_面向对象.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/review4_文件操作.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/review5_异常处理.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/review6_迭代器.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/review7_生成器.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/review8_装饰器.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/review9_包和模块.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_review/test.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +39,69 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/leetcode_1/021基本计算器Ⅱ_227.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0001012352997136" />
+      <entry key="MS500" value="1.167662333490334" />
+      <entry key="S2" value="2.2788076424877777" />
+      <entry key="S5" value="3.4426833528271907" />
+      <entry key="S10" value="4.1069807137502865" />
+      <entry key="S30" value="4.672095935925762" />
+      <entry key="S60" value="4.8319188757918745" />
+      <entry key="M2" value="4.914900039338157" />
+      <entry key="M5" value="4.994495534124822" />
+      <entry key="M10" value="5.954518550643255" />
+      <entry key="M15" value="8.394297638350913" />
+      <entry key="M30" value="21.58390061255308" />
+      <entry key="H1" value="56.288724889564214" />
+      <entry key="H2" value="105.73485972187743" />
+      <entry key="H4" value="149.7369203685743" />
+      <entry key="D1" value="202.96697908272552" />
+      <entry key="W1" value="214.08229868513723" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="8.923376604149242E-265" />
+      <entry key="S30" value="1.4525511255806948E-88" />
+      <entry key="S60" value="1.9695779935945513E-44" />
+      <entry key="M2" value="2.3952266941070076E-22" />
+      <entry key="M5" value="4.38053743956431E-9" />
+      <entry key="M10" value="1.2102375717230003E-4" />
+      <entry key="M15" value="0.003758584183773687" />
+      <entry key="M30" value="0.1200544253176834" />
+      <entry key="H1" value="0.6886441762284979" />
+      <entry key="H2" value="1.6568761534641472" />
+      <entry key="H4" value="2.573259848202227" />
+      <entry key="D1" value="3.7162372198307008" />
+      <entry key="W1" value="3.9581668298275563" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.9266851732809362" />
+      <entry key="MS500" value="1.1510967923178277" />
+      <entry key="S2" value="2.271516641558475" />
+      <entry key="S5" value="3.438305844814442" />
+      <entry key="S10" value="4.104367270637924" />
+      <entry key="S30" value="4.671103629547588" />
+      <entry key="S60" value="4.831405545385516" />
+      <entry key="M2" value="4.914638911600003" />
+      <entry key="M5" value="4.994389394476546" />
+      <entry key="M10" value="5.9545725475984606" />
+      <entry key="M15" value="8.397925098813044" />
+      <entry key="M30" value="21.702768172838063" />
+      <entry key="H1" value="56.97405931846883" />
+      <entry key="H2" value="107.38774334486466" />
+      <entry key="H4" value="152.30706755341023" />
+      <entry key="D1" value="206.6824637977295" />
+      <entry key="W1" value="218.04035091906377" />
+    </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -50,7 +127,9 @@
     &quot;Python.14模块.executor&quot;: &quot;Run&quot;,
     &quot;Python.1_异步与同步 (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.1_异步与同步.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pomodoro.executor&quot;: &quot;Run&quot;,
     &quot;Python.questions_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.review10_多线程.executor&quot;: &quot;Run&quot;,
     &quot;Python.review1_基础数据类型 (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.review2_函数.executor&quot;: &quot;Run&quot;,
     &quot;Python.review3_面向对象.executor&quot;: &quot;Run&quot;,
@@ -61,34 +140,21 @@
     &quot;Python.review8_装饰器.executor&quot;: &quot;Run&quot;,
     &quot;Python.review_1.executor&quot;: &quot;Run&quot;,
     &quot;Python.练习.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.1_异步与同步 (1)">
-    <configuration name="练习" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Python-practice-project" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Python_learning_notes/PythonBasic" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Python_learning_notes/PythonBasic/练习.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.review10_多线程">
     <configuration name="1_异步与同步 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-practice-project" />
       <option name="ENV_FILES" value="" />
@@ -102,6 +168,9 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend_practice/Code/1_异步与同步.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -124,6 +193,9 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend_practice/1_异步与同步.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -133,7 +205,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="review7_生成器" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="pomodoro" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Python-practice-project" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pomodoro" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pomodoro/pomodoro.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="review10_多线程" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Python-practice-project" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -146,7 +243,10 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_review/review7_生成器.py" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_review/review10_多线程.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -168,6 +268,9 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_review/review8_装饰器.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -179,18 +282,18 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.review10_多线程" />
+        <item itemvalue="Python.pomodoro" />
         <item itemvalue="Python.1_异步与同步 (1)" />
         <item itemvalue="Python.1_异步与同步" />
         <item itemvalue="Python.review8_装饰器" />
-        <item itemvalue="Python.练习" />
-        <item itemvalue="Python.review7_生成器" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-348a24fa61fa-5312c7369657-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.23774.444" />
+        <option value="bundled-python-sdk-6fa658e1df1a-5bd6d13a2a75-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-262.8665.369" />
       </set>
     </attachedChunks>
   </component>
@@ -201,8 +304,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1781756601036</updated>
+      <workItem from="1785915384469" duration="5235000" />
+      <workItem from="1785979250150" duration="4274000" />
+      <workItem from="1785983565744" duration="6588000" />
+      <workItem from="1785992134872" duration="1439000" />
+      <workItem from="1785993979322" duration="23000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -211,7 +322,16 @@
           <url>file://$PROJECT_DIR$/python_practice1/utils/logger.py</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/09线程，多线程，互斥锁.py</url>
+          <line>230</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Python_practice_project$review10_.coverage" NAME="review10_多线程 覆盖结果" MODIFIED="1785988067924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/python_review" />
+    <SUITE FILE_PATH="coverage/Python_practice_project$pomodoro.coverage" NAME="pomodoro 覆盖结果" MODIFIED="1785920459339" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pomodoro" />
   </component>
 </project>
