@@ -5,22 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/leetcode_2/043移除元素_27.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetcode_2/044验证回文串_125.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Python-practice-project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Python-practice-project.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode_2/045串联所有单词的子串_30.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/09线程，多线程，互斥锁.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python_learning_notes/PythonAdvanced/09线程，多线程，互斥锁.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/questions_1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/review1_基础数据类型.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/review2_函数.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/review3_面向对象.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/review4_文件操作.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/review5_异常处理.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/review6_迭代器.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/review7_生成器.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/review8_装饰器.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/review9_包和模块.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_review/test.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,61 +32,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0001012352997136" />
-      <entry key="MS500" value="1.167662333490334" />
-      <entry key="S2" value="2.2788076424877777" />
-      <entry key="S5" value="3.4426833528271907" />
-      <entry key="S10" value="4.1069807137502865" />
-      <entry key="S30" value="4.672095935925762" />
-      <entry key="S60" value="4.8319188757918745" />
-      <entry key="M2" value="4.914900039338157" />
-      <entry key="M5" value="4.994495534124822" />
-      <entry key="M10" value="5.954518550643255" />
-      <entry key="M15" value="8.394297638350913" />
-      <entry key="M30" value="21.58390061255308" />
-      <entry key="H1" value="56.288724889564214" />
-      <entry key="H2" value="105.73485972187743" />
-      <entry key="H4" value="149.7369203685743" />
-      <entry key="D1" value="202.96697908272552" />
-      <entry key="W1" value="214.08229868513723" />
+      <entry key="MS100" value="1.000263693908972" />
+      <entry key="MS500" value="1.2385747284974153" />
+      <entry key="S2" value="2.1258892153039426" />
+      <entry key="S5" value="2.5833350271406372" />
+      <entry key="S10" value="2.7783849840048354" />
+      <entry key="S30" value="2.9616258606843235" />
+      <entry key="S60" value="3.6520513957170073" />
+      <entry key="M2" value="6.206013539976892" />
+      <entry key="M5" value="11.825665577591" />
+      <entry key="M10" value="16.01708482290193" />
+      <entry key="M15" value="18.26418596315781" />
+      <entry key="M30" value="21.69976182340532" />
+      <entry key="H1" value="29.37698826767283" />
+      <entry key="H2" value="66.768502948987" />
+      <entry key="H4" value="150.71794629055807" />
+      <entry key="D1" value="357.6835392839087" />
+      <entry key="W1" value="420.3864476387945" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
-      <entry key="S10" value="8.923376604149242E-265" />
-      <entry key="S30" value="1.4525511255806948E-88" />
-      <entry key="S60" value="1.9695779935945513E-44" />
-      <entry key="M2" value="2.3952266941070076E-22" />
-      <entry key="M5" value="4.38053743956431E-9" />
-      <entry key="M10" value="1.2102375717230003E-4" />
-      <entry key="M15" value="0.003758584183773687" />
-      <entry key="M30" value="0.1200544253176834" />
-      <entry key="H1" value="0.6886441762284979" />
-      <entry key="H2" value="1.6568761534641472" />
-      <entry key="H4" value="2.573259848202227" />
-      <entry key="D1" value="3.7162372198307008" />
-      <entry key="W1" value="3.9581668298275563" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="1.0207731816848242E-179" />
+      <entry key="S60" value="3.1952604657692334E-90" />
+      <entry key="M2" value="1.8051318780660662E-45" />
+      <entry key="M5" value="1.5161324350514386E-18" />
+      <entry key="M10" value="1.9726895844063625E-9" />
+      <entry key="M15" value="2.449308391774572E-6" />
+      <entry key="M30" value="0.0033535736150035645" />
+      <entry key="H1" value="0.13609757023037947" />
+      <entry key="H2" value="0.9801915166082091" />
+      <entry key="H4" value="2.850890506809458" />
+      <entry key="D1" value="7.3831417552482925" />
+      <entry key="W1" value="8.747532211963602" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9266851732809362" />
-      <entry key="MS500" value="1.1510967923178277" />
-      <entry key="S2" value="2.271516641558475" />
-      <entry key="S5" value="3.438305844814442" />
-      <entry key="S10" value="4.104367270637924" />
-      <entry key="S30" value="4.671103629547588" />
-      <entry key="S60" value="4.831405545385516" />
-      <entry key="M2" value="4.914638911600003" />
-      <entry key="M5" value="4.994389394476546" />
-      <entry key="M10" value="5.9545725475984606" />
-      <entry key="M15" value="8.397925098813044" />
-      <entry key="M30" value="21.702768172838063" />
-      <entry key="H1" value="56.97405931846883" />
-      <entry key="H2" value="107.38774334486466" />
-      <entry key="H4" value="152.30706755341023" />
-      <entry key="D1" value="206.6824637977295" />
-      <entry key="W1" value="218.04035091906377" />
+      <entry key="MS100" value="0.9463002986733025" />
+      <entry key="MS500" value="1.2237990158350827" />
+      <entry key="S2" value="2.11892802794319" />
+      <entry key="S5" value="2.5799001907891363" />
+      <entry key="S10" value="2.7765301973872223" />
+      <entry key="S30" value="2.9609652928314913" />
+      <entry key="S60" value="3.6516432009932753" />
+      <entry key="M2" value="6.2056605950671075" />
+      <entry key="M5" value="11.825388119721362" />
+      <entry key="M10" value="16.016892485502602" />
+      <entry key="M15" value="18.264039734338372" />
+      <entry key="M30" value="21.70291111776777" />
+      <entry key="H1" value="29.510730665757773" />
+      <entry key="H2" value="67.74096187810288" />
+      <entry key="H4" value="153.5585389788218" />
+      <entry key="D1" value="365.0626840987578" />
+      <entry key="W1" value="429.1333175736247" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -147,8 +133,10 @@
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
@@ -309,6 +297,9 @@
       <workItem from="1785983565744" duration="6588000" />
       <workItem from="1785992134872" duration="1439000" />
       <workItem from="1785993979322" duration="23000" />
+      <workItem from="1786067819175" duration="4000" />
+      <workItem from="1786243072439" duration="11347000" />
+      <workItem from="1786266466486" duration="21000" />
     </task>
     <servers />
   </component>
