@@ -51,10 +51,6 @@ class Solution:
 
 
 #2.哈希表解法
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
 class Solution1:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         seen = set()
