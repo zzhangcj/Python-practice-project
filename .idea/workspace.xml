@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4658a766-0962-4e02-b8d3-6930ad805c07" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/leetcode_2/046两数相加_2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetcode_1/016环形链表_141.py" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode_1/016环形链表_141.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -302,6 +300,7 @@
       <workItem from="1786243072439" duration="11347000" />
       <workItem from="1786266466486" duration="21000" />
       <workItem from="1786324563723" duration="8065000" />
+      <workItem from="1786620630857" duration="1311000" />
     </task>
     <servers />
   </component>
