@@ -11,18 +11,20 @@
 ```
 Python-practice-project/
 ├── .idea/                  # IDE 本地缓存
-├── leetcode_1/             # LeetCode 算法刷题代码
+├── leetcode/               # LeetCode 算法刷题代码
 ├── pomodoro/               # 命令行番茄钟小程序
 ├── Python_learning_notes/  # Python 学习笔记与示例代码
 ├── python_practice1/       # 文件管理实战项目
-└── python_review/          # Python 核心知识点复习代码
+└── RAG_SmartLib/           # 一个RAG相关的Agent项目
+└── LangChain_1/            # LangChain的学习笔记
+└── FastAPI_1/              # FastAPI_1的学习笔记，但没写什么
+└── SQL_1/                  # SQL的学习笔记
+└── pandas_learn/           # pandas(数据分析清洗)的学习笔记
 ```
 
 ---
 
 ## 📂 文件夹说明
-### `.idea/`
-自动生成的本地配置文件夹（不用看）
 
 ### `leetcode_1/`
 算法刷题代码，包含数组、栈、链表、二叉树、回溯算法、图论搜索等常见题型
