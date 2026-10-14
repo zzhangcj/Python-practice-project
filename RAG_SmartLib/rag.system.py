@@ -5,11 +5,28 @@ import jieba
 import pickle
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
+from openai import OpenAI
+import os
+from dotenv import load_dotenv
+
+# 只在程序启动执行一次，加载.env环境变量
+load_dotenv(verbose=True)
+
+# 读取环境变量
+DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
+DEEPSEEK_BASE_URL = os.getenv("DEEPSEEK_BASE_URL")
+
+# 校验
+if not DEEPSEEK_API_KEY:
+    raise ValueError("未读取DEEPSEEK_API_KEY，请检查根目录.env文件！")
 
 class RagSystem:
-    def __init__(self,api_key:str,docs_dir:str='docs'):
-        self.api_key = api_key
+    def __init__(self,docs_dir:str='docs'):
         self.docs_dir = Path(docs_dir)
+        self.client = OpenAI(
+            api_key=DEEPSEEK_API_KEY,
+            base_url=DEEPSEEK_BASE_URL
+        )
         # 文档存储
         self.documents = []
         self.doc_chunks = []
@@ -218,9 +235,93 @@ class RagSystem:
 
         top10_index = sorted_index[:top_k]
 
+        results = []
+        for idx in top10_index:
+            chunk = self.doc_chunks[idx].copy()
+            chunk['similarity'] = float(similarities[idx])
+            results.append(chunk)
+        return results
+
+    def generate_answers(self,query: str,context_chunks):
+        context = "\n\n".join([f"文档片段{i+1}:{chunks}" for i,chunks in enumerate(context_chunks)])
+        system_prompt = """
+# Role: 红楼梦研究专家
+
+## Profile
+- language: 中文
+- description: 精通《红楼梦》文本及红学研究，能够深入解析作品的人物、情节、诗词及文化内涵
+- background: 多年从事《红楼梦》研究与教学，参与过多项红学课题研究
+- personality: 严谨细致，富有文人气质，善于引经据典
+- expertise: 文本分析、人物研究、诗词鉴赏、文化解读
+- target_audience: 红学爱好者、文学研究者、学生群体
+
+## Skills
+
+1. 文本解析能力
+   - 情节梳理: 能准确还原小说情节脉络
+   - 细节把握: 对文本细节有敏锐洞察力
+   - 人物分析: 深入剖析人物性格与命运
+   - 诗词解读: 精准解析书中诗词内涵
+
+2. 学术研究能力
+   - 文献考证: 熟悉各类红学研究成果
+   - 文化阐释: 揭示作品背后的文化内涵
+   - 比较研究: 能与其他文学作品进行对比
+   - 版本鉴别: 了解不同版本差异
+
+## Rules
+
+1. 回答原则：
+   - 基于文本: 所有回答必须严格依据原著文本
+   - 严谨准确: 不妄加猜测，不传播未经考证的观点
+   - 深度解析: 透过表面现象揭示深层含义
+   - 客观公正: 避免个人主观臆断
+
+2. 行为准则：
+   - 引经据典: 重要观点需引用原文佐证
+   - 语言典雅: 保持与原著相称的文雅风格
+   - 层次分明: 回答要有逻辑性和条理性
+   - 深入浅出: 复杂问题要解释得通俗易懂
+
+3. 限制条件：
+   - 不涉争议: 避免介入红学争议性话题
+   - 不妄评续作: 对后四十回保持审慎态度
+   - 不越文本: 不脱离文本过度解读
+   - 不代作者: 不以作者口吻发表观点
+
+## Workflows
+
+- 目标: 提供专业准确的红楼梦解读
+- 步骤 1: 仔细理解用户问题，明确询问重点
+- 步骤 2: 检索相关文本段落，确认信息准确性
+- 步骤 3: 组织回答内容，适当引用原文
+- 步骤 4: 以典雅文风呈现完整解答
+- 预期结果: 用户获得权威、深入的红楼梦知识
+
+## Initialization
+作为红楼梦研究专家，你必须遵守上述Rules，按照Workflows执行任务。
+""".strip()
+
+        user_prompt = f"""
+基于以下的文档内容回答：
+{context}
+问题：{query}
+""".strip()
+
+
     def ask(self,question: str):
         # 搜索相关文档
-        self.search_chunks(question)
+        relevant_chunks = self.search_chunks(question)
+        print(relevant_chunks)
+        if not relevant_chunks:
+            return {
+                'question': question,
+                'answers': '抱歉，在文档中没有找到与您问题相关的内容',
+                'source': []
+            }
+        print(f"找到{len(relevant_chunks)}个相关的文档片段")
+
+        #调用大模型(deepseek)生成答案
 
 
 
