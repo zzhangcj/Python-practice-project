@@ -243,7 +243,7 @@ class RagSystem:
         return results
 
     def generate_answers(self,query: str,context_chunks):
-        context = "\n\n".join([f"文档片段{i+1}:{chunks}" for i,chunks in enumerate(context_chunks)])
+        context = "\n\n".join([f"文档片段{i+1}:{chunk['content']}" for i,chunk in enumerate(context_chunks)])
         system_prompt = """
 # Role: 红楼梦研究专家
 
@@ -307,6 +307,23 @@ class RagSystem:
 {context}
 问题：{query}
 """.strip()
+        try:
+            response = self.client.chat.completions.create(
+                model="deepseek-chat",
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_prompt},
+                ],
+                max_tokens=1000,
+                stream=False,
+                temperature=0.7
+            )
+            return response.choices[0].message.content
+        except Exception as e:
+            error_type = (type(e)).__name__
+            error_details = str(e) if str(e) else "未知错误"
+            print(f"生成答案时出错：{error_type}-{error_details}")
+            return f"生成答案时出错：{error_type}-{error_details}"
 
 
     def ask(self,question: str):
@@ -322,12 +339,26 @@ class RagSystem:
         print(f"找到{len(relevant_chunks)}个相关的文档片段")
 
         #调用大模型(deepseek)生成答案
+        print("正在生成答案...")
+        answers = self.generate_answers(question,relevant_chunks)
+        print(answers)
 
-
-
+        #整理来源信息
+        source = []
+        for chunk in relevant_chunks:
+            source.append({
+                "source": chunk['source'],
+                "similarity": chunk['similarity'],
+                "content_preview": chunk['content'][:100] + '...' if len(chunk['content']) > 100 else chunk['content'],
+            })
+        return {
+            "question": question,
+            "answers": answers,
+            "source": source
+        }
 
 def main():
-    rag = RagSystem(api_key="deepseek_key")
+    rag = RagSystem()
     rag.initialize()
 
     # 交互式问答
@@ -344,7 +375,17 @@ def main():
             continue
 
         # 获取答案
-        rag.ask(question)
+        result = rag.ask(question)
+
+        # 显示结果
+        print(f"\n答案： {result['answers']}")
+
+        if result['source']:
+            print("\n相关的文档片段：")
+            for i,source in enumerate(result['source'],1):
+                print(f"{i}. 来源：{source['source']}(相似度：{source['similarity']:.3f})")
+                print(f"内容预览：{source['content_preview']}")
+
 
 if __name__ == "__main__":
     main()
