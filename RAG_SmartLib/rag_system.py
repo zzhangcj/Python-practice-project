@@ -70,17 +70,13 @@ class RagSystem:
 
         return stopwords
 
-
-
     def load_documents(self):
         """加载文档"""
         print("正在加载红楼梦文档...")
         for file_path in self.docs_dir.glob("*.txt"):
-            # print(file_path,type(file_path))
             try:
                 with open(file_path, "r", encoding="utf-8") as f:
                     content = f.read().strip()
-                    # print(content)
                     if content:
                         self.documents.append({
                             'filename': file_path.name,

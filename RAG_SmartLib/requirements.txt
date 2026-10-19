@@ -3,3 +3,4 @@ jieba
 numpy
 openai>=1.0.0
 python-dotenv
+streamlit>=1.66.0
