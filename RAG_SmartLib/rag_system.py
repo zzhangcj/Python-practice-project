@@ -322,7 +322,7 @@ class RagSystem:
             return f"生成答案时出错：{error_type}-{error_details}"
 
 
-    def ask(self,question: str):
+    def ask(self,question: str,top_k:int=10,similarity_threshold: float=0.01):
         # 搜索相关文档
         relevant_chunks = self.search_chunks(question)
         print(relevant_chunks)

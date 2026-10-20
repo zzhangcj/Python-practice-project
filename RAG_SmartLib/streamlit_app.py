@@ -147,6 +147,42 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+def display_chat_message(role, content, sources=None, typing=False):
+    """显示聊天消息"""
+    if role == "user":
+        st.markdown(f"""
+        <div class="chat-message user-message">
+            <strong>🙋‍♀️ 您:</strong> {content}
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        typing_indicator = '<span class="typing-indicator">💭</span>' if typing else '🤖'
+        st.markdown(f"""
+        <div class="chat-message assistant-message">
+            <strong>{typing_indicator} 红楼梦助手:</strong> {content}
+        </div>
+        """, unsafe_allow_html=True)
+
+        if sources:
+            with st.expander(f"📖 参考文档片段 ({len(sources)}个)", expanded=False):
+                for i, source in enumerate(sources, 1):
+                    similarity_color = "#4caf50" if source['similarity'] > 0.5 else "#ff9800" if source[
+                                                                                                     'similarity'] > 0.3 else "#f44336"
+                    st.markdown(f"""
+                    <div class="source-info">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                            <strong>📄 片段 {i}: {source['source']}</strong>
+                            <span style="background: {similarity_color}; color: white; padding: 0.2rem 0.5rem; border-radius: 1rem; font-size: 0.8rem;">
+                                相似度: {source['similarity']:.3f}
+                            </span>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.8); padding: 0.5rem; border-radius: 0.5rem; border-left: 3px solid {similarity_color};">
+                            <em>📝 内容预览:</em><br>
+                            {source['content_preview']}
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
 def getEnvInfo(key):
     env_file = Path(".env")
 
@@ -169,9 +205,18 @@ def init_session_state():
     #系统状态
     if 'system_init' not in st.session_state:
         st.session_state.system_init = False
+
     #deepseek_key
     if 'api_key' not in st.session_state:
         st.session_state.api_key = getEnvInfo('DEEPSEEK_API_KEY')
+
+    #快捷问题
+    if 'preset_question' not in st.session_state:
+        st.session_state.preset_question = ""
+
+    #选择角色
+    if 'selected_role' not in st.session_state:
+        st.session_state.selected_role = ""
 
     #自动初始化
     rag = RagSystem()
@@ -188,7 +233,6 @@ def check_cache_exists():
 def main():
     init_session_state()
     st.markdown('<h1 class="main-header">📚图书智能检索系统</h1>',unsafe_allow_html=True)
-    # print(getEnvInfo('DEEPSEEK_API_KEY'),'DEEPSEEK_API_KEY')
 
     #侧边栏
     with st.sidebar:
@@ -237,6 +281,132 @@ def main():
         else:
             if st.button("🚀 加载缓存数据",use_container_width=True):
                 init_session_state()
+
+        # 搜索参数配置
+        if st.session_state.system_init:
+            st.header('🔍 搜索参数')
+            # 最大返回文档数量
+            top_k = st.slider(
+                '📄 最大返回文档数量',
+                min_value=1,
+                max_value=20,
+                value=10,
+                help='设置搜索时最多返回多少个相关文档片段'
+            )
+            
+            #相似度阈值
+            similarity_threshold = st.slider(
+                '📊 相似度阈值',
+                min_value=0.0,
+                max_value=1.0,
+                value=0.01,
+                step=0.01,
+                help='只返回相似度高于此值的文档片段，值越高，结果越精确'
+            )
+
+            #保存到session_state
+            st.session_state.search_top_k = top_k
+            st.session_state.search_similarity_threshold = similarity_threshold
+
+    #主要对话区域
+    st.header("💬 与AI智能助手对话")
+
+    #快捷问题
+    st.subheader("⚡ 快捷问题")
+    col1, col2,col3,col4 = st.columns(4)
+    with col1:
+        if st.button("🎭 人物关系",use_container_width=True):
+            if st.session_state.system_init:
+                #设置预选问题到session_state
+                st.session_state.preset_question = '红楼梦中主要人物关系是怎样的？'
+                st.session_state.selected_role='人物关系'
+    with col2:
+        if st.button("📚 情节梗概",use_container_width=True):
+            if st.session_state.system_init:
+                st.session_state.preset_question = '请简述红楼梦第一回的主要情节？'
+                st.session_state.selected_role='情节梗概'
+
+    with col3:
+        if st.button("🎨 文学手法",use_container_width=True):
+            if st.session_state.system_init:
+                st.session_state.preset_question = '红楼梦运用了哪些文学表现手法？'
+                st.session_state.selected_role='文学手法'
+
+    with col4:
+        if st.button("💎 象征意义",use_container_width=True):
+            if st.session_state.system_init:
+                st.session_state.preset_question = '通灵宝玉有什么象征意义？'
+                st.session_state.selected_role='象征意义'
+
+    #显示已选择的角色
+    if st.session_state.selected_role:
+        st.info(f"✅ 已选择角色：{st.session_state.selected_role}")
+
+    #用户输入区域
+    with st.form(key="char_form",clear_on_submit=True):
+        col1,col2 = st.columns([5,1])
+        with col1:
+            user_input = st.text_area(
+                '💬 请输入您的问题',
+                value=st.session_state.preset_question,
+                placeholder="比如：甄士隐是谁？他在故事中起到什么作用？\n\n💡 提示：您可以询问人物、情节、诗词、象征意义等任何关于红楼梦的问题",
+                height=100,
+                label_visibility='visible',
+            )
+        with col2:
+            st.markdown("<br/>",unsafe_allow_html=True)
+            submit_button = st.form_submit_button("🚀 发送",use_container_width=True,type="primary")
+            clear_button = st.form_submit_button("🧹 清空",use_container_width=True,type="primary")
+
+        #处理情况
+        if clear_button:
+            st.session_state.preset_question = ''
+            st.session_state.selected_role = ''
+
+        #处理发送
+        if submit_button and user_input.strip():
+            #如果系统初始化完成
+            if st.session_state.system_init and st.session_state.rag_system:
+                #先清空预设问题和选择角色
+                st.session_state.preset_question = ''
+                st.session_state.selected_role = ''
+
+                #显示对话效果
+                display_chat_message("user",user_input)
+
+                #显示思考中的状态
+                thinking_placeholder = st.empty()
+                with thinking_placeholder:
+                    display_chat_message("assistant","正在思考中，请稍后...",typing=True)
+                with st.spinner("🔍 正在搜索相关文档... 📚 正在生成回答..."):
+                    # 获取搜索参数
+                    top_k = getattr(st.session_state,'search_top_k',10)
+                    similarity_threshold = getattr(st.session_state,'search_similarity_threshold',0.01)
+                    result = st.session_state.rag_system.ask(user_input,top_k=top_k,similarity_threshold=similarity_threshold)
+
+
+                #清除思考状态
+                thinking_placeholder.empty()
+                #处理模型返回的数据
+                processed_sources = []
+                for source in result['source']:
+                    if 'content_preview' in source:
+                        content = source['content_preview']
+                    elif 'content' in source:
+                        content = source['content'][:200] + '...' if len(source['content']) > 200 else source['content']
+                    else:
+                        content = '无内容预览'
+
+                    processed_sources.append({
+                        'source':source['source'],
+                        'similarity':source['similarity'],
+                        'content_preview':content,
+                    })
+
+                #显示助手回答
+                display_chat_message("assistant",result['answers'],processed_sources)
+
+
 
 
 
