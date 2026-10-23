@@ -1,0 +1,238 @@
+{
+  "main": {
+    "id": "79ab187bf6566ac4",
+    "type": "split",
+    "children": [
+      {
+        "id": "bc5f0e1490be0679",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "31ec705775a8119f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00. 智能实验室预约系统介绍.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00. 智能实验室预约系统介绍"
+            }
+          },
+          {
+            "id": "1d11f0baed85e9a0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "遇到的问题.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "遇到的问题"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "70532b76006a5a0c",
+    "type": "split",
+    "children": [
+      {
+        "id": "ae9d99df382ce2a7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b409c7678b9dca91",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "694ef047860763f3",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "846e0e23c7f12ef3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4b1b8334b65e28f7",
+    "type": "split",
+    "children": [
+      {
+        "id": "3d45a74b7a6c1b50",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e4a99c01a2b29d28",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "00. 智能实验室预约系统介绍.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "ec673592308d6bd6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "00. 智能实验室预约系统介绍.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "f99a9e61cd30acb5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "57e77e88af6d1253",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "6ccba457b62a6c1e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "00. 智能实验室预约系统介绍.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "31ec705775a8119f",
+  "lastOpenFiles": [
+    "03. 开发前端登录页面.md",
+    "02. 搭建前端Vue主体框架.md",
+    "01. 搭建项目环境创建前端Vue工程.md",
+    "遇到的问题.md",
+    "Pasted image 20261023102830.png",
+    "Pasted image 20261022131725.png",
+    "Pasted image 20261022121359.png",
+    "Pasted image 20261022120835.png",
+    "00. 智能实验室预约系统介绍.md",
+    "26. 完善系统首页与收尾.md",
+    "25. 用SSE做流式输出和过程可见.md",
+    "24. 用 LangGraph 做智能预约 Agent.md",
+    "23. 用Tool Calling让助手查询实验室数据.md",
+    "22. 用RAG给实验室助手接入知识库.md",
+    "21. 开发实验室AI助手对话（前端+联调）.md",
+    "20. 开发实验室AI助手对话（后端）.md",
+    "19. 开发我的预约和预约审核.md",
+    "18. 开发实验室预约功能.md",
+    "17. 开发学生端实验室列表和设备列表.md",
+    "16. 开发实验室设备管理功能.md",
+    "15. 开发实验室管理功能.md",
+    "14. 开发用户增删改功能.md",
+    "13. 开发用户列表展示功能.md",
+    "12. 开发用户修改密码功能.md",
+    "11. 开发用户修改个人信息功能.md",
+    "10. 开发后端文件上传API接口.md",
+    "09. 开发用户注册功能.md",
+    "08. Vue封装axios并实现前后端接口联调.md",
+    "07. 后端封装统一响应格式+全局异常处理.md",
+    "06. 开发后端 JWT 用户认证.md"
+  ]
+}

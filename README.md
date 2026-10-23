@@ -1,8 +1,5 @@
-# Python 练习仓库｜物联网工程个人学习仓库
-- 仓库用途：算法刷题、Python基础练习、小型程序Demo、学习笔记汇总
-- 学习方向：Python 编程训练
-- 说明：个人练习代码，持续更新
-
+# Python 仓库｜物联网工程个人学习仓库
+- 仓库用途：算法刷题、Python基础练习、小型程序Demo、学习笔记，项目汇总
 
   ---
   
@@ -20,6 +17,7 @@ Python-practice-project/
 └── FastAPI_1/              # FastAPI_1的学习笔记，但没写什么
 └── SQL_1/                  # SQL的学习笔记
 └── pandas_learn/           # pandas(数据分析清洗)的学习笔记
+└── Smart_Lab_Booking/      # 智能实验室预约系统的项目以及笔记
 ```
 
 ---
@@ -30,7 +28,7 @@ Python-practice-project/
 算法刷题代码，包含数组、栈、链表、二叉树、回溯算法、图论搜索等常见题型
 
 ### `pomodoro/`
-简易命令行番茄计时器，小型控制台程序练习
+简易命令行番茄计时器，独立自主设计开发迭代，也借助了AI辅助
 
 ### `Python_learning_notes/`
 Python基础、进阶知识点笔记，附带配套演示代码，初学的时候写得笔记
@@ -40,3 +38,11 @@ Python基础、进阶知识点笔记，附带配套演示代码，初学的时�
 
 ### `python_review/`
 Python复习使用的，高频知识点练习脚本：基础类型、函数、面向对象、装饰器、异常处理、生成器等
+
+### RAG_SmartLib/
+**重要的项目1**
+RAG 检索增强生成实战项目，包含文档加载、切分、向量检索、大模型问答、会话缓存、前端交互
+
+### Smart_Lab_Booking/
+**重要的项目2**（还没做完）
+AI智能实验室预约系统完整项目，Vue3前端 + FastAPI后端，包含业务系统、RAG知识库、Tool‑Calling、LangGraph Agent全套代码与开发笔记
