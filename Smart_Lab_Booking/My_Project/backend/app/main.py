@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from app.models.user import User
 from app.database import Base, engine
+from app.api import api
+
 
 Base.metadata.create_all(bind=engine)
 
@@ -13,7 +15,7 @@ app = FastAPI(
         "swaggerCssUrl": "https://cdn.bootcdn.net/ajax/libs/swagger-ui/5.17.12/swagger-ui.css",
     },
 )
-
+app.include_router(api)
 
 @app.get("/")
 def root():
