@@ -49,3 +49,8 @@ a:visited {
 img {
     max-width: 100%;
 }
+
+/* 处理退出登录的那里的黑框 */
+.el-tooltip__trigger {
+    outline: none !important
+}
