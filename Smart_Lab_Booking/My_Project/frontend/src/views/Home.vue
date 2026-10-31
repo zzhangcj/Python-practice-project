@@ -1,5 +1,5 @@
 <template>
-  <div>欢迎您：{{ userInfo?.username }}！</div>
+  <div>欢迎您：{{ userInfo?.name }}！</div>
 </template>
 
 <script setup>
