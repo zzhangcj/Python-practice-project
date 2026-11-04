@@ -44,6 +44,6 @@ def upload(file: UploadFile = File(...)):
             original_name=orignal_name,
             disk_name=disk_name,
             size=file.size,
-            url=f"/upload/{disk_name}",
+            url=f"/uploads/{disk_name}",
         )
     )
