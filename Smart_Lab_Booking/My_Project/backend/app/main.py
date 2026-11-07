@@ -1,5 +1,6 @@
 from app.models.user import User
 from app.database import Base, engine
+from app.models.lab import Lab
 from app.api import api
 from fastapi import FastAPI, HTTPException
 from fastapi.staticfiles import StaticFiles
