@@ -58,7 +58,7 @@
             </el-tag>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="160" >
+        <el-table-column label="操作" width="160" align="center">
           <template #default="{ row }">
             <el-button type="primary" text bg @click="handleEdit(row)">编辑</el-button>
             <el-button type="danger" text bg @click="handleDelete(row)">删除</el-button>
