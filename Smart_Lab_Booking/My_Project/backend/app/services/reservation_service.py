@@ -58,7 +58,7 @@ def create_reservation(db: Session, current_user: User, data: ReservationCreateR
     if res:
         raise BusinessException(message="该时段已被预约")
 
-    resvervation_model = Reservation(
+    reservation_model = Reservation(
         user_id=current_user.id,
         lab_id=data.lab_id,
         equipment_id=data.equipment_id,
@@ -68,5 +68,5 @@ def create_reservation(db: Session, current_user: User, data: ReservationCreateR
         remark=data.remark,
         status=0,
     )
-    db.add(resvervation_model)
+    db.add(reservation_model)
     db.commit()

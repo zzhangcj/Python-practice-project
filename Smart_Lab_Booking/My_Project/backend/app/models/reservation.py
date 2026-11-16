@@ -18,7 +18,7 @@ class Reservation(Base):
         ForeignKey("labs.id"), comment="实验室", nullable=False
     )
     equipment_id: Mapped[int] = mapped_column(
-        ForeignKey("equipments.id"), comment="设备，空表示预约实验室", nullable=False
+        ForeignKey("equipments.id"), comment="设备，空表示预约实验室", nullable=True
     )
     date: Mapped[str] = mapped_column(String(20), comment="预约日期", nullable=False)
     start_time: Mapped[str] = mapped_column(
@@ -34,4 +34,4 @@ class Reservation(Base):
 
     user:Mapped[User]=relationship()
     lab:Mapped[Lab]=relationship()
-    user:Mapped[Equipment]=relationship()
+    equipment: Mapped[Equipment] = relationship()
