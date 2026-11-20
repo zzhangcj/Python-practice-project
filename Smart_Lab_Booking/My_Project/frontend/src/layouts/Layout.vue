@@ -38,6 +38,10 @@
               <el-icon><icon-menu /></el-icon>
               <span>系统首页</span>
             </el-menu-item>
+            <el-menu-item index="/manager/ai-chat">
+              <el-icon><ChatDotRound /></el-icon>
+              <span>AI智能助手</span>
+            </el-menu-item>
             <el-menu-item index="/manager/lablist" v-if="userInfo?.role === 'student'">
               <el-icon><OfficeBuilding /></el-icon>
               <span>实验室列表</span>
@@ -80,7 +84,8 @@ import {
   User,
   OfficeBuilding,
   Tickets,
-  DocumentChecked
+  DocumentChecked,
+  ChatDotRound
 } from '@element-plus/icons-vue'
 import router from '@/router'
 import { logout } from '@/utils/auth'
